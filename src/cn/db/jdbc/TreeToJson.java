@@ -25,7 +25,7 @@ public class TreeToJson {
 		
 		TreeToJson tt=new TreeToJson();
 		tt.GetSQL();
-		
+//		sf 
 //		ChildrenAndParent cap=new ChildrenAndParent();
 //		cap.setId(1);
 //		cap.setName("a");
