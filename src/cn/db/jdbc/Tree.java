@@ -4,16 +4,17 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 
-public class ChildrenAndParent {
+public class Tree {
 
 	private int id;
 	private String name;
-	private List<ChildrenAndParent> children;
+	private int pid;
+	private List<Tree> children;
 
-	public ChildrenAndParent(int id, String name, List<ChildrenAndParent> children) {
+	public Tree(int id, String name, int pid) {
 		this.id = id;
 		this.name = name;
-		this.children = children;
+		this.pid = pid;
 	}
 
 	public int getId() {
@@ -32,25 +33,33 @@ public class ChildrenAndParent {
 		this.name = name;
 	}
 
-	public List<ChildrenAndParent> getChildren() {
+	public int getPid() {
+		return pid;
+	}
+
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+
+	public List<Tree> getChildren() {
 		return children;
 	}
 
-	public void setChildren(List<ChildrenAndParent> children) {
+	public void setChildren(List<Tree> children) {
 		this.children = children;
 	}
 
 	public void spark() {
-		System.out.println(this.id + "\t" + this.name + "\t" + this.children);
+		System.out.println(this.id + "\t" + this.name + this.pid + "\t" + this.children);
 	}
-	
-	public ChildrenAndParent() {
+
+	public Tree() {
 		super();
 	}
-	
+
 	@Override
 	public String toString() {
 		return JSON.toJSONString(this);
 	}
-	
+
 }

@@ -1,7 +1,7 @@
 /**
- * 2019-08-20-¶ş  09:48
- * »ÆÆôÍş
- * Œ¢MYSQLÖĞµÄÊ÷ĞÍÊı¾İ±í×ª»»³ÉJSON¸ñÊ½£¨Ê¹ÓÃGSON¼Ü°ü£©
+ * 2019-08-20-ï¿½ï¿½  09:48
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½MYSQLï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ±ï¿½×ªï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½Ê½ï¿½ï¿½Ê¹ï¿½ï¿½GSONï¿½Ü°ï¿½ï¿½ï¿½
  */
 package cn.db.jdbc;
 
@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 
 import java.sql.CallableStatement;
@@ -22,19 +23,116 @@ import java.sql.CallableStatement;
 public class TreeToJson {
 
 	public static void main(String[] args) {
-		
-		TreeToJson tt=new TreeToJson();
-		tt.GetSQL();
+
+//		TreeToJson tt = new TreeToJson();
+//		tt.GetSQL();
 
 //		ChildrenAndParent cap=new ChildrenAndParent();
 //		cap.setId(1);
 //		cap.setName("a");
 //		cap.setChildrenId(12);
 //		cap.spark();
-		
+
+		List<Tree> list = new ArrayList<Tree>();
+		list.add(new Tree(1, "FOOD", 0));
+		list.add(new Tree(2, "FRUIT", 1));
+		list.add(new Tree(3, "RED", 2));
+		list.add(new Tree(4, "CHERRY", 3));
+		list.add(new Tree(5, "YELLOW", 2));
+		list.add(new Tree(6, "BANANA", 5));
+		list.add(new Tree(7, "MEAT", 1));
+		list.add(new Tree(8, "BEEF", 7));
+		list.add(new Tree(9, "PORK", 7));
+
+		List<Tree> treeList = new ArrayList<Tree>();
+		List<Tree> treeList1 = new ArrayList<Tree>();
+		List<Tree> treeList2 = new ArrayList<Tree>();
+		List<Tree> treeList3 = new ArrayList<Tree>();
+
+		treeList = listGetStree(list);
+		treeList1 = listToTree(list);
+		treeList2 = toTree(list);
+
+//		System.out.println(JSON.toJSONString(treeList));
+        System.out.println(JSON.toJSONString(treeList1));
+//        System.out.println(JSON.toJSONString(treeList2));
 	}
-	
-	//Á¬½ÓÊı¾İ¿â
+
+	private static List<Tree> listGetStree(List<Tree> list) {
+		List<Tree> treeList = new ArrayList<Tree>();
+		for (Tree tree : list) {
+			// æ‰¾åˆ°æ ¹
+			if (tree.getPid() == 0) {
+				treeList.add(tree);
+			}
+			// æ‰¾åˆ°å­
+			for (Tree Tree : list) {
+				if (Tree.getPid() == tree.getId()) {
+					if (tree.getChildren() == null) {
+						tree.setChildren(new ArrayList<Tree>());
+					}
+					tree.getChildren().add(Tree);
+				}
+			}
+		}
+		return treeList;
+	}
+
+	public static List<Tree> listToTree(List<Tree> list) {
+		// ç”¨é€’å½’æ‰¾å­ã€‚
+		List<Tree> treeList = new ArrayList<Tree>();
+		for (Tree tree : list) {
+			if (tree.getPid() == 0) {
+				treeList.add(findChildren(tree, list));
+			}
+		}
+		return treeList;
+	}
+
+	private static Tree findChildren(Tree tree, List<Tree> list) {
+		for (Tree node : list) {
+			if (node.getPid() == tree.getId()) {
+				if (tree.getChildren() == null) {
+					tree.setChildren(new ArrayList<Tree>());
+				}
+				tree.getChildren().add(findChildren(node, list));
+			}
+		}
+		return tree;
+	}
+
+	private static List<Tree> toTree(List<Tree> list) {
+		List<Tree> treeList = new ArrayList<Tree>();
+		for (Tree tree : list) {
+			if (tree.getPid() == 0) {
+				treeList.add(tree);
+			}
+		}
+		for (Tree tree : list) {
+			toTreeChildren(treeList, tree);
+		}
+		return treeList;
+	}
+
+	/**
+	 * @param treeList
+	 * @param tree
+	 */
+	private static void toTreeChildren(List<Tree> treeList, Tree tree) {
+		for (Tree node : treeList) {
+			if (tree.getPid() == node.getId()) {
+				if (node.getChildren() == null) {
+					node.setChildren(new ArrayList<Tree>());
+				}
+				node.getChildren().add(tree);
+			}
+			if (node.getChildren() != null) {
+				toTreeChildren(node.getChildren(), tree);
+			}
+		}
+	}
+
+	// è¿æ¥æ•°æ®åº“
 	public static void GetSQL() {
 		Connection con;
 		String driver = "com.mysql.cj.jdbc.Driver";
@@ -58,7 +156,7 @@ public class TreeToJson {
 
 			List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 			while (rs.next()) {
-				Map<String, String> map = new HashMap<String, String>();// ÒªÃ¿´Î´´½¨Ò»¸öĞÂµÄÓ³Éä±í£¬²»È»Ö»»á±£´æ×îºóÒ»×éÊı¾İ
+				Map<String, String> map = new HashMap<String, String>();
 				map.put("node_id", rs.getString(1));
 				map.put("name", rs.getString(2));
 				map.put("parent_id", rs.getString(3));
@@ -69,7 +167,6 @@ public class TreeToJson {
 				System.out.println(node_id + "\t" + name + "\t" + parent_id);
 			}
 
-			// ÓÃGSONÖĞµÄ·½·¨½«LISTĞòÁĞ»¯ÎªJSON×Ö·û´®
 			Gson gson = new Gson();
 			String jsonstr = null;
 			jsonstr = gson.toJson(list);
