@@ -1,10 +1,12 @@
 package cn.db.jdbc;
 
+import java.util.List;
+
 public class ChildrenAndParent {
 	//创建私有的对象
 	private int id;
 	private String name;
-	private int childrenId;
+	private List<ChildrenAndParent> children;
 	
 	public int getId() {
 		return id;
@@ -20,13 +22,13 @@ public class ChildrenAndParent {
 	}
 	
 	
-	public int getChildrenId() {
-		return childrenId;
+	public List<ChildrenAndParent> getChildren() {
+		return children;
 	}
-	public void setChildrenId(int childrenId) {
-		this.childrenId = childrenId;
+	public void setChildren(List<ChildrenAndParent> children) {
+		this.children = children;
 	}
 	public void spark() {
-		System.out.println(this.id+"\t"+this.name+"\t"+this.childrenId);
+		System.out.println(this.id+"\t"+this.name+"\t"+this.children);
 	}
 }
