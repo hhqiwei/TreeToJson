@@ -24,33 +24,27 @@ public class TreeToJson {
 
 	public static void main(String[] args) {
 
-//		TreeToJson tt = new TreeToJson();
-//		tt.GetSQL();
+		TreeToJson tt = new TreeToJson();
+		tt.GetSQL();
 
-//		ChildrenAndParent cap=new ChildrenAndParent();
-//		cap.setId(1);
-//		cap.setName("a");
-//		cap.setChildrenId(12);
-//		cap.spark();
-
-		List<Tree> list = new ArrayList<Tree>();
-		list.add(new Tree(1, "FOOD", 0));
-		list.add(new Tree(2, "FRUIT", 1));
-		list.add(new Tree(3, "RED", 2));
-		list.add(new Tree(4, "CHERRY", 3));
-		list.add(new Tree(5, "YELLOW", 2));
-		list.add(new Tree(6, "BANANA", 5));
-		list.add(new Tree(7, "MEAT", 1));
-		list.add(new Tree(8, "BEEF", 7));
-		list.add(new Tree(9, "PORK", 7));
-
-		List<Tree> treeList = new ArrayList<Tree>();
-		List<Tree> treeList1 = new ArrayList<Tree>();
-
-		treeList1 = listToTree(list);
-
-		System.out.println(JSON.toJSONString(treeList));
-		System.out.println(JSON.toJSONString(treeList1));
+//		List<Tree> list = new ArrayList<Tree>();
+//		list.add(new Tree(1, "FOOD", 0));
+//		list.add(new Tree(2, "FRUIT", 1));
+//		list.add(new Tree(3, "RED", 2));
+//		list.add(new Tree(4, "CHERRY", 3));
+//		list.add(new Tree(5, "YELLOW", 2));
+//		list.add(new Tree(6, "BANANA", 5));
+//		list.add(new Tree(7, "MEAT", 1));
+//		list.add(new Tree(8, "BEEF", 7));
+//		list.add(new Tree(9, "PORK", 7));
+//
+//		List<Tree> treeList = new ArrayList<Tree>();
+//		List<Tree> treeList1 = new ArrayList<Tree>();
+//
+//		treeList1 = listToTree(list);
+//
+//		System.out.println(JSON.toJSONString(treeList));
+//		System.out.println(JSON.toJSONString(treeList1));
 	}
 
 	// 用递归的方法
@@ -99,23 +93,21 @@ public class TreeToJson {
 			String name = null;
 			int parent_id = 0;
 
-//			List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+			List<Tree> list = new ArrayList<Tree>();
 			while (rs.next()) {
-//				Map<String, String> map = new HashMap<String, String>();
-//				map.put("node_id", rs.getString(1));
-//				map.put("name", rs.getString(2));
-//				map.put("parent_id", rs.getString(3));
-//				list.add(map);
+
 				node_id = rs.getInt("id");
 				name = rs.getString("name");
 				parent_id = rs.getInt("pid");
 				System.out.println(node_id + "\t" + name + "\t" + parent_id);
+
+				list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+
 			}
 
-//			Gson gson = new Gson();
-//			String jsonstr = null;
-//			jsonstr = gson.toJson(list);
-//			System.out.println(jsonstr);
+			List<Tree> treeList = new ArrayList<Tree>();
+			treeList = listToTree(list);
+			System.out.println(JSON.toJSONString(treeList));
 
 			rs.close();
 			con.close();
