@@ -18,7 +18,7 @@ public class ToJson {
 		// 用递归找子节点
 		List<Tree> treeList = new ArrayList<Tree>();
 		for (Tree tree : list) {
-			if (tree.getPid() == 0) {
+			if (tree.getPid() == 0) {//先找到根节点
 				treeList.add(findChildren(tree, list));
 			}
 		}
