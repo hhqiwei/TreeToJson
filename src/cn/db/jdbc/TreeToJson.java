@@ -47,30 +47,6 @@ public class TreeToJson {
 //		System.out.println(JSON.toJSONString(treeList1));
 	}
 
-	// 用递归的方法
-	public static List<Tree> listToTree(List<Tree> list) {
-		// 用递归找子。
-		List<Tree> treeList = new ArrayList<Tree>();
-		for (Tree tree : list) {
-			if (tree.getPid() == 0) {
-				treeList.add(findChildren(tree, list));
-			}
-		}
-		return treeList;
-	}
-
-	private static Tree findChildren(Tree tree, List<Tree> list) {
-		for (Tree node : list) {
-			if (node.getPid() == tree.getId()) {
-				if (tree.getChildren() == null) {
-					tree.setChildren(new ArrayList<Tree>());
-				}
-				tree.getChildren().add(findChildren(node, list));
-			}
-		}
-		return tree;
-	}
-
 	// 连接数据库
 	public static void GetSQL() {
 		Connection con;
@@ -95,19 +71,16 @@ public class TreeToJson {
 
 			List<Tree> list = new ArrayList<Tree>();
 			while (rs.next()) {
-
 				node_id = rs.getInt("id");
 				name = rs.getString("name");
 				parent_id = rs.getInt("pid");
 				System.out.println(node_id + "\t" + name + "\t" + parent_id);
 
 				list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
-
 			}
 
-			List<Tree> treeList = new ArrayList<Tree>();
-			treeList = listToTree(list);
-			System.out.println(JSON.toJSONString(treeList));
+			ToJson tj = new ToJson();
+			tj.treeToJson(list);//调用函数，传入List<Tree>参数
 
 			rs.close();
 			con.close();
