@@ -46,38 +46,14 @@ public class TreeToJson {
 
 		List<Tree> treeList = new ArrayList<Tree>();
 		List<Tree> treeList1 = new ArrayList<Tree>();
-		List<Tree> treeList2 = new ArrayList<Tree>();
-		List<Tree> treeList3 = new ArrayList<Tree>();
 
-		treeList = listGetStree(list);
 		treeList1 = listToTree(list);
-		treeList2 = toTree(list);
 
-//		System.out.println(JSON.toJSONString(treeList));
-        System.out.println(JSON.toJSONString(treeList1));
-//        System.out.println(JSON.toJSONString(treeList2));
+		System.out.println(JSON.toJSONString(treeList));
+		System.out.println(JSON.toJSONString(treeList1));
 	}
 
-	private static List<Tree> listGetStree(List<Tree> list) {
-		List<Tree> treeList = new ArrayList<Tree>();
-		for (Tree tree : list) {
-			// 找到根
-			if (tree.getPid() == 0) {
-				treeList.add(tree);
-			}
-			// 找到子
-			for (Tree Tree : list) {
-				if (Tree.getPid() == tree.getId()) {
-					if (tree.getChildren() == null) {
-						tree.setChildren(new ArrayList<Tree>());
-					}
-					tree.getChildren().add(Tree);
-				}
-			}
-		}
-		return treeList;
-	}
-
+	// 用递归的方法
 	public static List<Tree> listToTree(List<Tree> list) {
 		// 用递归找子。
 		List<Tree> treeList = new ArrayList<Tree>();
@@ -99,37 +75,6 @@ public class TreeToJson {
 			}
 		}
 		return tree;
-	}
-
-	private static List<Tree> toTree(List<Tree> list) {
-		List<Tree> treeList = new ArrayList<Tree>();
-		for (Tree tree : list) {
-			if (tree.getPid() == 0) {
-				treeList.add(tree);
-			}
-		}
-		for (Tree tree : list) {
-			toTreeChildren(treeList, tree);
-		}
-		return treeList;
-	}
-
-	/**
-	 * @param treeList
-	 * @param tree
-	 */
-	private static void toTreeChildren(List<Tree> treeList, Tree tree) {
-		for (Tree node : treeList) {
-			if (tree.getPid() == node.getId()) {
-				if (node.getChildren() == null) {
-					node.setChildren(new ArrayList<Tree>());
-				}
-				node.getChildren().add(tree);
-			}
-			if (node.getChildren() != null) {
-				toTreeChildren(node.getChildren(), tree);
-			}
-		}
 	}
 
 	// 连接数据库
@@ -154,23 +99,23 @@ public class TreeToJson {
 			String name = null;
 			int parent_id = 0;
 
-			List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+//			List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 			while (rs.next()) {
-				Map<String, String> map = new HashMap<String, String>();
-				map.put("node_id", rs.getString(1));
-				map.put("name", rs.getString(2));
-				map.put("parent_id", rs.getString(3));
-				list.add(map);
+//				Map<String, String> map = new HashMap<String, String>();
+//				map.put("node_id", rs.getString(1));
+//				map.put("name", rs.getString(2));
+//				map.put("parent_id", rs.getString(3));
+//				list.add(map);
 				node_id = rs.getInt("id");
 				name = rs.getString("name");
 				parent_id = rs.getInt("pid");
 				System.out.println(node_id + "\t" + name + "\t" + parent_id);
 			}
 
-			Gson gson = new Gson();
-			String jsonstr = null;
-			jsonstr = gson.toJson(list);
-			System.out.println(jsonstr);
+//			Gson gson = new Gson();
+//			String jsonstr = null;
+//			jsonstr = gson.toJson(list);
+//			System.out.println(jsonstr);
 
 			rs.close();
 			con.close();
