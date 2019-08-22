@@ -15,3 +15,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 （如何找到IDEA连接mysql数据库的jar包本地路径）[https://jingyan.baidu.com/article/948f592474f2c7980ef5f97c.html]
 ## 2019-08-22 17:34
 成功将连接数据库的方法封装成一个类，并成功调用。
+## 2019-08-22 18:23
+由用户输入的数据来调用方法。（但是调用方法的时候，参数传进去了，还是调用调用不成功，可能是传入的数据类型不对，接下来检查数据类型）

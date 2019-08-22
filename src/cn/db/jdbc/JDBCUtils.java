@@ -31,12 +31,15 @@ public class JDBCUtils {
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
     ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) {
         if (dbType == "MySQL") {
+            System.out.println("Connecting the MySQL,please wait!");
             return ConMySQL(dbName, tableName, user, password);
         } else if (dbType == "Oracle") {
+            System.out.println("Connecting the Oracle,please wait!");
             return ConOracle(dbName, tableName, user, password);
         } else return null;
     }
 
+    //连接MYSQL数据库
     private ResultSet ConMySQL(String dbName, String tableName, String user, String password) {
         Connection con;
         String driver = "com.mysql.cj.jdbc.Driver";
