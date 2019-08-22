@@ -18,7 +18,7 @@ import java.util.*;
 
 public class TreeToJson {
 
-	public static void main(String[] args) throws NullPointerException{
+	public static void main(String[] args) {
 
 		TreeToJson tt = new TreeToJson();
 		tt.GetSQL();
@@ -65,12 +65,9 @@ public class TreeToJson {
 			user = pro.getProperty("user");
 			password = pro.getProperty("password");
 
-
-
 			System.out.println(pro.getProperty("url"));
 			System.out.println(pro.getProperty("user"));
 			System.out.println(pro.getProperty("password"));
-
 
 		}catch (FileNotFoundException e){
 		    e.printStackTrace();
