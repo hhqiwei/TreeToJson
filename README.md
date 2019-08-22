@@ -13,3 +13,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ## 2019-08-22 16:18
 建立Oracle数据库并且读取数据表内容。
 （如何找到IDEA连接mysql数据库的jar包本地路径）[https://jingyan.baidu.com/article/948f592474f2c7980ef5f97c.html]
+## 2019-08-22 17:34
+成功将连接数据库的方法封装成一个类，并成功调用。
