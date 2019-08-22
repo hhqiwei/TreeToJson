@@ -5,24 +5,20 @@
  */
 package cn.db.jdbc;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.alibaba.fastjson.JSON;
-import com.google.gson.Gson;
-
-import java.sql.CallableStatement;
+import java.util.*;
 
 public class TreeToJson {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NullPointerException{
 
 		TreeToJson tt = new TreeToJson();
 		tt.GetSQL();
@@ -50,10 +46,41 @@ public class TreeToJson {
 	// 连接数据库
 	public static void GetSQL() {
 		Connection con;
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/test" + "?serverTimezone=GMT%2B8";
-		String user = "root";
-		String password = "123456";
+//		String driver = "com.mysql.cj.jdbc.Driver";
+//		String url = "jdbc:mysql://localhost:3306/test" + "?serverTimezone=GMT%2B8";
+//		String user = "root";
+//		String password = "123456";
+
+		String driver = null;
+		String url = null;
+		String user = null ;
+		String password = null;
+
+		String profilepath= "src/util/jdbc.properties";
+		Properties pro=new Properties();
+		try{
+		    pro.load(new FileInputStream(profilepath));
+		     driver = pro.getProperty("driverClass");
+			url = pro.getProperty("url");
+			user = pro.getProperty("user");
+			password = pro.getProperty("password");
+
+
+
+			System.out.println(pro.getProperty("url"));
+			System.out.println(pro.getProperty("user"));
+			System.out.println(pro.getProperty("password"));
+
+
+		}catch (FileNotFoundException e){
+		    e.printStackTrace();
+		    System.exit(-1);
+        }catch (IOException e){
+		    System.exit(-1);
+		}
+
+
+
 
 		try {
 			Class.forName(driver);
