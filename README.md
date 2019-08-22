@@ -9,4 +9,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 3、数据库账号密码等不能写死，因为每个数据库的账号密码都不同。
 4、由数据表找出父子关系，不能写死。（现在我就是由我自己定义的父子关系表，所以很简单的就可以找出来了）
 ## 2019-08-22 10:34 
-添加配置文件并读取
+添加配置文件并读取。
+## 2019-08-22 16:18
+建立Oracle数据库并且读取数据表内容。
+（如何找到IDEA连接mysql数据库的jar包本地路径）[https://jingyan.baidu.com/article/948f592474f2c7980ef5f97c.html]

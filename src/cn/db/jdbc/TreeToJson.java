@@ -5,15 +5,12 @@
  */
 package cn.db.jdbc;
 
+import javax.xml.transform.Result;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 
 public class TreeToJson {
@@ -21,7 +18,8 @@ public class TreeToJson {
 	public static void main(String[] args) {
 
 		TreeToJson tt = new TreeToJson();
-		tt.GetSQL();
+//		tt.ConMySQL();
+		tt.ConOrcale();
 
 //		List<Tree> list = new ArrayList<Tree>();
 //		list.add(new Tree(1, "FOOD", 0));
@@ -43,8 +41,8 @@ public class TreeToJson {
 //		System.out.println(JSON.toJSONString(treeList1));
 	}
 
-	// 连接数据库
-	public static void GetSQL() {
+	// 连接mysql数据库
+	public static void ConMySQL() {
 		Connection con;
 //		String driver = "com.mysql.cj.jdbc.Driver";
 //		String url = "jdbc:mysql://localhost:3306/test" + "?serverTimezone=GMT%2B8";
@@ -75,8 +73,6 @@ public class TreeToJson {
         }catch (IOException e){
 		    System.exit(-1);
 		}
-
-
 
 
 		try {
@@ -119,5 +115,57 @@ public class TreeToJson {
 			System.out.println("end!");
 		}
 	}
+
+	//连接oracle数据库
+    public static void ConOrcale(){
+        Connection conn=null;
+        PreparedStatement ps=null;
+        ResultSet res=null;
+
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
+            String user = "c##hhqiwei";
+            String password="123456";
+            conn=DriverManager.getConnection(url,user,password);
+            String sql="select * from test";
+            ps=conn.prepareStatement(sql);
+            res=ps.executeQuery();
+            while (res.next()){
+				System.out.println(res.getString("id"));
+                System.out.println(res.getString("name"));
+				System.out.println(res.getString("age"));
+				System.out.println(res.getString("pid"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                if (res!=null){
+					res.close();
+                }
+            }catch(SQLException e){
+            	e.printStackTrace();
+			}finally{
+            	try{
+            		if(ps!=null){
+            			ps.close();
+					}
+				}catch (SQLException e){
+            		e.printStackTrace();
+				}finally{
+            		try{
+            			if(conn!=null){
+            				conn.close();
+						}
+					}catch (SQLException e){
+            			e.printStackTrace();
+					}
+				}
+			}
+        }
+
+
+    }
 
 }
