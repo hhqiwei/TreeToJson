@@ -3,15 +3,12 @@
  * ������
  * ��MYSQL�е��������ݱ�ת����JSON��ʽ��ʹ��GSON�ܰ���
  */
+//mysql:"MySQL", "test", "treetable", "root", "123456"
+//oracle:"Oracle", "XE", "test", "c##hhqiwei", "123456"
 package cn.db.jdbc;
 
-import javax.xml.transform.Result;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
-import java.util.*;
+import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class TreeToJson {
 
@@ -25,6 +22,7 @@ public class TreeToJson {
         String user;
         String password;
 
+        //用户输入数据
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Please input thd DBType:");
@@ -42,15 +40,13 @@ public class TreeToJson {
         System.out.print("Please input thd password:");
         password = sc.nextLine();
 
-        System.out.println(DBType+'\t'+dbName+'\t'+tableName+'\t'+user+'\t'+password);
+        System.out.println(DBType + '\t' + dbName + '\t' + tableName + '\t' + user + '\t' + password);
 
-        utils.chooseDB((String)DBType, (String)dbName, (String)tableName, (String)user, (String)password);
-        System.out.println("==============================");
-		utils.chooseDB("Oracle", "XE", "test", "c##hhqiwei", "123456");
+        //调用数据库方法返回查找到的数据库内容
+        ResultSet rs = utils.chooseDB((String) DBType, (String) dbName, (String) tableName, (String) user, (String) password);
+//        System.out.println("==============================");
+//        utils.chooseDB("Oracle", "XE", "test", "c##hhqiwei", "123456");
 
-
-//        TreeToJson tt = new TreeToJson();
-//		tt.ConMySQL();
 
 //		List<Tree> list = new ArrayList<Tree>();
 //		list.add(new Tree(1, "FOOD", 0));

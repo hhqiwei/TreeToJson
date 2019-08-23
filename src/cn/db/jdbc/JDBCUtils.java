@@ -1,12 +1,8 @@
 package cn.db.jdbc;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class JDBCUtils {
 //    public enum DBType {
@@ -53,6 +49,7 @@ public class JDBCUtils {
 //        String password = null;
         ResultSet res = null;
 
+        //连接配置文件
 //        String profilepath = "src/util/jdbc.properties";
 //        Properties pro = new Properties();
 //        try {
@@ -73,7 +70,6 @@ public class JDBCUtils {
 //            System.exit(-1);
 //        }
 
-
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, user, password);
@@ -88,7 +84,7 @@ public class JDBCUtils {
             String name = null;
             int parent_id = 0;
 
-//            List<Tree> list = new ArrayList<Tree>();
+            List<Tree> list = new ArrayList<Tree>();
             res = rs;
             while (rs.next()) {
                 node_id = rs.getInt("id");
@@ -96,11 +92,11 @@ public class JDBCUtils {
                 parent_id = rs.getInt("pid");
                 System.out.println(node_id + "\t" + name + "\t" + parent_id);
 
-//                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
             }
 
-//            ToJson tj = new ToJson();
-//            tj.treeToJson(list);//调用函数，传入List<Tree>参数
+            ToJson tj = new ToJson();
+            tj.treeToJson(list);//调用函数，传入List<Tree>参数
 
             rs.close();
             con.close();
@@ -134,12 +130,16 @@ public class JDBCUtils {
             ps = conn.prepareStatement(sql);
             res = ps.executeQuery();
 
+            List<Tree> list = new ArrayList<Tree>();
             while (res.next()) {
-                System.out.println(res.getString("id"));
-                System.out.println(res.getString("name"));
-                System.out.println(res.getString("age"));
-                System.out.println(res.getString("pid"));
+                System.out.println(res.getString("id") + '\t' + res.getString("name") + '\t' +
+                        res.getString("age") + '\t' + res.getString("pid"));
+                list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(4)));
             }
+
+            ToJson tj = new ToJson();
+            tj.treeToJson(list);//调用函数，传入List<Tree>参数
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
