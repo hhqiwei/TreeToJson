@@ -30,10 +30,10 @@ public class JDBCUtils {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
     ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) {
-        if (dbType == "MySQL") {
+        if (dbType.equals("MySQL")) {
             System.out.println("Connecting the MySQL,please wait!");
             return ConMySQL(dbName, tableName, user, password);
-        } else if (dbType == "Oracle") {
+        } else if (dbType.equals("Oracle")) {
             System.out.println("Connecting the Oracle,please wait!");
             return ConOracle(dbName, tableName, user, password);
         } else return null;
