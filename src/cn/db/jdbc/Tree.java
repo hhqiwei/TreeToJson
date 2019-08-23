@@ -1,8 +1,8 @@
 package cn.db.jdbc;
 
-import java.util.List;
-
 import com.alibaba.fastjson.JSON;
+
+import java.util.List;
 
 public class Tree {
 
@@ -10,6 +10,10 @@ public class Tree {
     private String name;
     private int pid;
     private List<Tree> children;
+
+    public Tree() {
+        super();
+    }
 
     public Tree(int id, String name, int pid) {
         this.id = id;
@@ -51,10 +55,6 @@ public class Tree {
 
     public void spark() {
         System.out.println(this.id + "\t" + this.name + this.pid + "\t" + this.children);
-    }
-
-    public Tree() {
-        super();
     }
 
     @Override
