@@ -14,7 +14,7 @@ public class TreeToJson {
 
     public static void main(String[] args) {
 
-        JDBCUtils utils = new JDBCUtils();
+        ConnectSQL utils = new ConnectSQL();
 
         String DBType;
         String dbName;

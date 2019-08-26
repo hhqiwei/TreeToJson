@@ -42,3 +42,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 成功使用DRUID连接池技术连接数据库。
 ### 16:34
 编写JDBCUtils类，并测试。
+### 17:19
+分离连接池和数据库连接，分别为：JDBCUtils、ConnectSQL。
