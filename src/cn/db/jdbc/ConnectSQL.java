@@ -27,9 +27,9 @@ public class ConnectSQL {
 
     //连接MYSQL数据库
     private ResultSet ConMySQL(String dbName, String tableName, String user, String password) {
-        Connection con;
-        String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
+//        Connection con;
+//        String driver = "com.mysql.cj.jdbc.Driver";
+//        String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
 //		String user = "root";
 //		String password = "123456";
 
@@ -37,7 +37,7 @@ public class ConnectSQL {
 //        String url = null;
 //        String user = null;
 //        String password = null;
-        ResultSet res = null;
+//        ResultSet res = null;
 
         //连接配置文件
 //        String profilepath = "src/util/jdbc.properties";
@@ -60,47 +60,73 @@ public class ConnectSQL {
 //            System.exit(-1);
 //        }
 
+//        try {
+//            Class.forName(driver);
+//            con = DriverManager.getConnection(url, user, password);
+//            if (!con.isClosed()) {
+//                System.out.println("Succeed connecting to the Database!");
+//            }
+//            Statement statement = con.createStatement();
+//            String sql = "select * from " + tableName;
+//            ResultSet rs = statement.executeQuery(sql);
+//
+//            int node_id = 0;
+//            String name = null;
+//            int parent_id = 0;
+//
+//            List<Tree> list = new ArrayList<Tree>();
+//            res = rs;
+//            while (rs.next()) {
+//                node_id = rs.getInt("id");
+//                name = rs.getString("name");
+//                parent_id = rs.getInt("pid");
+//                System.out.println(node_id + "\t" + name + "\t" + parent_id);
+//
+//                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+//            }
+//
+//            ToJson tj = new ToJson();
+//            tj.treeToJson(list);//调用函数，传入List<Tree>参数
+//
+//            rs.close();
+//            con.close();
+//        } catch (ClassNotFoundException e) {
+//            System.out.println("Sorry,can't find the Driver!");
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            System.out.println("end!");
+//        }
+//        return res;
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet res = null;
+        int node_id = 0;
+        String name = null;
+        int parent_id = 0;
         try {
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, user, password);
-            if (!con.isClosed()) {
-                System.out.println("Succeed connecting to the Database!");
-            }
-            Statement statement = con.createStatement();
-            String sql = "select * from " + tableName;
-            ResultSet rs = statement.executeQuery(sql);
-
-            int node_id = 0;
-            String name = null;
-            int parent_id = 0;
-
-            List<Tree> list = new ArrayList<Tree>();
-            res = rs;
+            conn = JDBCUtils.getConnection();
+            String sql = "select * from treetable";
+            pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 node_id = rs.getInt("id");
                 name = rs.getString("name");
                 parent_id = rs.getInt("pid");
                 System.out.println(node_id + "\t" + name + "\t" + parent_id);
 
-                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+//                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
             }
-
-            ToJson tj = new ToJson();
-            tj.treeToJson(list);//调用函数，传入List<Tree>参数
-
-            rs.close();
-            con.close();
-        } catch (ClassNotFoundException e) {
-            System.out.println("Sorry,can't find the Driver!");
-            e.printStackTrace();
+            System.out.println("");
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("end!");
         }
         return res;
+
     }
 
 
@@ -159,7 +185,6 @@ public class ConnectSQL {
         }
         return res;
     }
-
 
 
 }

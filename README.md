@@ -44,3 +44,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 编写JDBCUtils类，并测试。
 ### 17:19
 分离连接池和数据库连接，分别为：JDBCUtils、ConnectSQL。
+### 21:11
+                                      尝试通过连接池test数据库,因为家里的电脑没有MYSQL，暂时无法连接上。

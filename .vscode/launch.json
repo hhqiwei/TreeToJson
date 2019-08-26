@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DruidDemo",
+            "request": "launch",
+            "mainClass": "druid.DruidDemo",
+            "projectName": "TreeToJson"
+        }
+    ]
+}
