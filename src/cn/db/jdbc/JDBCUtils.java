@@ -1,27 +1,91 @@
 package cn.db.jdbc;
 
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class JDBCUtils {
-//    public enum DBType {
-//        MySQL,
-//        Oracle
-//    }
-//
-//    private JDBCUtils(){}
-//
-//    public static DataSource getDataSource(DBType dbType){
-//        DataSource ds=null;
-//
-//        if(dbType==DBType.Oracle){
-//
-//        }else if(dbType==DBType.MySQL){
-//            dataSource=
+
+    //1.定义成员变量 DataSource
+    private static DataSource ds;
+
+    static {
+
+        try {//1.加载配置文件
+            Properties pro=new Properties();
+            pro.load(JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties"));
+            //2.获取DataSource
+            ds= DruidDataSourceFactory.createDataSource(pro);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //获取连接
+    public static Connection getConnection() throws SQLException {
+        return ds.getConnection();
+    }
+
+    //释放资源
+    public static void close(Statement stmt,Connection conn){
+//        if(stmt!=null){
+//            try {
+//                stmt.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
 //        }
-//        return dataSource;
-//    }
+//
+//        if(conn!=null){
+//            try {
+//                conn.close();//归还连接
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        close(null,stmt,conn);
+    }
+
+    //释放资源,重载
+    public static void close(ResultSet rs,Statement stmt,Connection conn){
+        if(rs!=null){
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(stmt!=null){
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(conn!=null){
+            try {
+                conn.close();//归还连接
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    //获取连接池方法
+    public  static DataSource getDataSource(){
+        return ds;
+    }
 
     //利用传入的参数选择对应的连接方式以连接不同的数据库
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;

@@ -39,4 +39,6 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ## 2019-08-26 14:42
 经过几天的考虑，计划使用数据库连接池连接数据库。DRUID连接池技术，由阿里巴巴提供。
 ### 15:42
-                    成功使用DRUID连接池技术连接数据库。
+成功使用DRUID连接池技术连接数据库。
+### 16:34
+编写JDBCUtils类，并测试。
