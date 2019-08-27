@@ -79,7 +79,9 @@ public class DruidDemo {
     public void DruidTest() throws SQLException {
         //超过最大限制或报"TimeoutException",每打开一个关闭一个就不会发生异常
         for (int i = 0; i < 100; i++) {
-            Connection connection = JDBCUtils.getConnection();
+            Connection connection = JDBCUtils.getConnection("com.mysql.cj.jdbc.Driver",
+                    "jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8",
+                    "root","123456");
             System.out.println(connection.toString() + "\n------------------------------------");
 
 //            JDBCUtils.closeAll(connection, null, null);

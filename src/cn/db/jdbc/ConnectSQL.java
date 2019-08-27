@@ -54,8 +54,19 @@ public class ConnectSQL {
         String name = null;
         int parent_id = 0;
 
+
+        /**
+         *   //四个基本属性
+         *             ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+         *             ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
+         *             ds.setUsername("root");
+         *             ds.setPassword("root");
+         */
         try {
-            conn = JDBCUtils.getConnection();//调用方法，使用连接池
+            String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
+            conn = JDBCUtils.getConnection("com.mysql.cj.jdbc.Driver",
+                    url,
+                    user, password);//调用方法，使用连接池
             String sql = "select * from " + tableName;
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();

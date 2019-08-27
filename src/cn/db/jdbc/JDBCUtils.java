@@ -12,37 +12,20 @@ import java.util.Properties;
 
 public class JDBCUtils {
 
-    //1.定义成员变量 DataSource
-//    private static DataSource ds;
+    //1.定义成员变量 DruidDataSource
     public static DruidDataSource ds;
 
-//    static {
-//        try {//1.加载配置文件
-//            Properties pro = new Properties();
-//            pro.load(JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties"));
-//            //2.获取DataSource
-//            ds = DruidDataSourceFactory.createDataSource(pro);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
-    //获取连接
-    public static Connection getConnection() throws SQLException {
-        try {//1.加载配置文件
-//            Properties properties = new Properties();
-//            //通过类加载器加载配置文件
-//            InputStream inputStream = JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties");
-//            properties.load(inputStream);
-//            ds = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
+    //获取连接，用传入参数的方法解决了修改配置文件但是无法及时更新的问题。
+    public static Connection getConnection(String driverClassName,String url,String userName,String password) throws SQLException {
+        //硬编码初始化Druid连接池
+        try {
             ds = new DruidDataSource();
             //四个基本属性
-            ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
-            ds.setUsername("root");
-            ds.setPassword("123456");
+            ds.setDriverClassName(driverClassName);
+            ds.setUrl(url);
+            ds.setUsername(userName);
+            ds.setPassword(password);
             //其他属性
             //初始大小
             ds.setInitialSize(10);

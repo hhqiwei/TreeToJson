@@ -63,3 +63,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 数据，说明数据更新不及时）
 ### 14:50
 使用硬编码初始化Druid，成功连接到数据库，接下来就是要传入参数修改就行。参考：数据库连接池之Druid连接池(mysql)[https://blog.csdn.net/Dear_UU/article/details/89370491]
+### 15:09
+重新编写JDBCUtils类的getConnection()方法，用传入参数的方法解决了修改配置文件但是无法及时更新的问题。
