@@ -45,4 +45,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 17:19
 分离连接池和数据库连接，分别为：JDBCUtils、ConnectSQL。
 ### 21:11
-                                      尝试通过连接池test数据库,因为家里的电脑没有MYSQL，暂时无法连接上。
+尝试通过连接池test数据库,因为家里的电脑没有MYSQL，暂时无法连接上。
+## 2019-08-27 星期二 08:55
+1.删除一些多余的代码。
+2.成功通过连接池操作MySQL数据库，并成功显示出JSON数据。

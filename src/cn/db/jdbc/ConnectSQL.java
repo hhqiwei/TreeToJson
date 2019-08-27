@@ -4,22 +4,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
-
 public class ConnectSQL {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
     ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) {
-        if (dbType.equals("MySQL")) {
+        if (dbType.equals("mysql")) {
             System.out.println("Connecting the MySQL,please wait!");
             return ConMySQL(dbName, tableName, user, password);
-        } else if (dbType.equals("Oracle")) {
+        } else if (dbType.equals("oracle")) {
             System.out.println("Connecting the Oracle,please wait!");
             return ConOracle(dbName, tableName, user, password);
         } else return null;
@@ -27,81 +19,6 @@ public class ConnectSQL {
 
     //连接MYSQL数据库
     private ResultSet ConMySQL(String dbName, String tableName, String user, String password) {
-//        Connection con;
-//        String driver = "com.mysql.cj.jdbc.Driver";
-//        String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
-//		String user = "root";
-//		String password = "123456";
-
-//        String driver = null;
-//        String url = null;
-//        String user = null;
-//        String password = null;
-//        ResultSet res = null;
-
-        //连接配置文件
-//        String profilepath = "src/util/jdbc.properties";
-//        Properties pro = new Properties();
-//        try {
-//            pro.load(new FileInputStream(profilepath));
-//            driver = pro.getProperty("driverClass");
-//            url = pro.getProperty("url");
-//            user = pro.getProperty("user");
-//            password = pro.getProperty("password");
-//
-//            System.out.println(pro.getProperty("url"));
-//            System.out.println(pro.getProperty("user"));
-//            System.out.println(pro.getProperty("password"));
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        } catch (IOException e) {
-//            System.exit(-1);
-//        }
-
-//        try {
-//            Class.forName(driver);
-//            con = DriverManager.getConnection(url, user, password);
-//            if (!con.isClosed()) {
-//                System.out.println("Succeed connecting to the Database!");
-//            }
-//            Statement statement = con.createStatement();
-//            String sql = "select * from " + tableName;
-//            ResultSet rs = statement.executeQuery(sql);
-//
-//            int node_id = 0;
-//            String name = null;
-//            int parent_id = 0;
-//
-//            List<Tree> list = new ArrayList<Tree>();
-//            res = rs;
-//            while (rs.next()) {
-//                node_id = rs.getInt("id");
-//                name = rs.getString("name");
-//                parent_id = rs.getInt("pid");
-//                System.out.println(node_id + "\t" + name + "\t" + parent_id);
-//
-//                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
-//            }
-//
-//            ToJson tj = new ToJson();
-//            tj.treeToJson(list);//调用函数，传入List<Tree>参数
-//
-//            rs.close();
-//            con.close();
-//        } catch (ClassNotFoundException e) {
-//            System.out.println("Sorry,can't find the Driver!");
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            System.out.println("end!");
-//        }
-//        return res;
-
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet res = null;
@@ -110,23 +27,27 @@ public class ConnectSQL {
         int parent_id = 0;
         try {
             conn = JDBCUtils.getConnection();
-            String sql = "select * from treetable";
+            String sql = "select * from "+tableName;
             pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
+            List<Tree> list = new ArrayList<Tree>();
             while (rs.next()) {
                 node_id = rs.getInt("id");
                 name = rs.getString("name");
                 parent_id = rs.getInt("pid");
                 System.out.println(node_id + "\t" + name + "\t" + parent_id);
 
-//                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+                list.add(new Tree(rs.getInt(1), rs.getString(2), rs.getInt(3)));
             }
-            System.out.println("");
+            ToJson tj = new ToJson();
+            tj.treeToJson(list);//调用函数，传入List<Tree>参数
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            JDBCUtils.close(pstmt, conn);
+
         }
         return res;
-
     }
 
 
@@ -185,6 +106,5 @@ public class ConnectSQL {
         }
         return res;
     }
-
 
 }

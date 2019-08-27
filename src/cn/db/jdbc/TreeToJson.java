@@ -46,26 +46,6 @@ public class TreeToJson {
         ResultSet rs = utils.chooseDB((String) DBType, (String) dbName, (String) tableName, (String) user, (String) password);
 //        System.out.println("==============================");
 //        utils.chooseDB("Oracle", "XE", "test", "c##hhqiwei", "123456");
-
-
-//		List<Tree> list = new ArrayList<Tree>();
-//		list.add(new Tree(1, "FOOD", 0));
-//		list.add(new Tree(2, "FRUIT", 1));
-//		list.add(new Tree(3, "RED", 2));
-//		list.add(new Tree(4, "CHERRY", 3));
-//		list.add(new Tree(5, "YELLOW", 2));
-//		list.add(new Tree(6, "BANANA", 5));
-//		list.add(new Tree(7, "MEAT", 1));
-//		list.add(new Tree(8, "BEEF", 7));
-//		list.add(new Tree(9, "PORK", 7));
-//
-//		List<Tree> treeList = new ArrayList<Tree>();
-//		List<Tree> treeList1 = new ArrayList<Tree>();
-//
-//		treeList1 = listToTree(list);
-//
-//		System.out.println(JSON.toJSONString(treeList));
-//		System.out.println(JSON.toJSONString(treeList1));
     }
 
     // 连接mysql数据库
