@@ -74,3 +74,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 自动生成MYSQL数据表测试数据。参考：【使用navicat premium 批量生成测试数据】（https://blog.csdn.net/yxw_android/article/details/80817174）
 ### 18:26
 将生成的JSON数据输出到文件中（未完成）。
+### 18:28
+将treetable.sql保存到项目中。
