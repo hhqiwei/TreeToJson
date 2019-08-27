@@ -65,3 +65,8 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 使用硬编码初始化Druid，成功连接到数据库，接下来就是要传入参数修改就行。参考：数据库连接池之Druid连接池(mysql)[https://blog.csdn.net/Dear_UU/article/details/89370491]
 ### 15:09
 重新编写JDBCUtils类的getConnection()方法，用传入参数的方法解决了修改配置文件但是无法及时更新的问题。
+### 16:04
+通过连接池连接ORACLE数据库，一开始出现“八月 27, 2019 4:03:56 下午 com.alibaba.druid.pool.DruidAbstractDataSource error 
+严重: oracle.jdbc.driver.OracleDriver is deprecated.”错误。
+解决方法参考：Spring boot项目启动报错oracle.jdbc.driver.OracleDriver is deprecated，但项目还可以起来【https://blog.csdn.net/yanyanhj/article/details/88352908】
+将driverClassName="oracle.jdbc.driver.OracleDriver";改为driverClassName="oracle.jdbc.OracleDriver";

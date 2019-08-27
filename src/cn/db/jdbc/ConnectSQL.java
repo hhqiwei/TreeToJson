@@ -1,40 +1,14 @@
 package cn.db.jdbc;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class ConnectSQL {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
     public ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) throws IOException {
-
-
-        //尝试更新配置文件
-//        try {
-//            Thread.sleep(5000);
-//            PropertiesDemo pd=new PropertiesDemo();
-//            pd.init();
-//            pd.update("username", user);//修改用户名
-//            pd.update("password", password);
-//
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//            System.out.println("Pleae input the right String!");
-//        } finally {
-//            PropertiesDemo pd=new PropertiesDemo();
-//            pd.init();
-//            System.out.println("3333333333333333");
-//            //获取所有
-//            pd.list();
-//
-//        }
 
         if (dbType.equals("mysql")) {
             System.out.println("Connecting the MySQL,please wait!");
@@ -54,20 +28,18 @@ public class ConnectSQL {
         String name = null;
         int parent_id = 0;
 
-
         /**
-         *   //四个基本属性
-         *             ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-         *             ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
-         *             ds.setUsername("root");
-         *             ds.setPassword("root");
+         *  四个基本属性
+         *  ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+         *  ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
+         *  ds.setUsername("root");
+         *  ds.setPassword("root");
          */
         try {
+            String driverClassName = "com.mysql.cj.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
-            conn = JDBCUtils.getConnection("com.mysql.cj.jdbc.Driver",
-                    url,
-                    user, password);//调用方法，使用连接池
-            String sql = "select * from " + tableName;
+            conn = JDBCUtils.getConnection(driverClassName, url, user, password);//调用方法，使用连接池
+            String sql = String.format("select * from %s", tableName);
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
             List<Tree> list = new ArrayList<Tree>();
@@ -89,22 +61,34 @@ public class ConnectSQL {
         return res;
     }
 
-
     //连接ORACLE数据库
     public ResultSet ConOracle(String dbName, String tableName, String user, String password) {
         Connection conn = null;
-        PreparedStatement ps = null;
+        PreparedStatement pstm = null;
         ResultSet res = null;
 
+        /**
+         *  四个基本属性
+         *  ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+         *  ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
+         *  ds.setUsername("root");
+         *  ds.setPassword("root");
+         */
+
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            String driverClassName="oracle.jdbc.OracleDriver";
             String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
-//            String user = "c##hhqiwei";
-//            String password="123456";
-            conn = DriverManager.getConnection(url, user, password);
-            String sql = "select * from " + tableName;
-            ps = conn.prepareStatement(sql);
-            res = ps.executeQuery();
+            conn = JDBCUtils.getConnection(driverClassName,url,user,password);
+
+
+//            Class.forName("oracle.jdbc.driver.OracleDriver");
+//            conn = DriverManager.getConnection(url, user, password);
+            String sql = String.format("select * from %s", tableName);
+            pstm=conn.prepareStatement(sql);
+            res=pstm.executeQuery();
+//            ps = conn.prepareStatement(sql);
+//            res = ps.executeQuery();
 
             List<Tree> list = new ArrayList<Tree>();
             while (res.next()) {
@@ -112,38 +96,13 @@ public class ConnectSQL {
                         res.getString("age") + '\t' + res.getString("pid"));
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(4)));
             }
-
             ToJson tj = new ToJson();
             tj.treeToJson(list);//调用函数，传入List<Tree>参数
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (res != null) {
-                    res.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (ps != null) {
-                        ps.close();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (conn != null) {
-                            conn.close();
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            JDBCUtils.close(pstm,conn);
         }
         return res;
     }
-
 }
