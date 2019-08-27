@@ -13,7 +13,6 @@ public class JDBCUtils {
     private static DataSource ds;
 
     static {
-
         try {//1.加载配置文件
             Properties pro = new Properties();
             pro.load(JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties"));

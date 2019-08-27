@@ -3,11 +3,18 @@ package cn.db.jdbc;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class ConnectSQL {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
     ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) {
+
+
+        PropertiesDemo.init();
+        PropertiesDemo.update("username",user);//修改用户名
+        PropertiesDemo.update("password",password);
+
         if (dbType.equals("mysql")) {
             System.out.println("Connecting the MySQL,please wait!");
             return ConMySQL(dbName, tableName, user, password);
@@ -45,7 +52,6 @@ public class ConnectSQL {
             e.printStackTrace();
         } finally {
             JDBCUtils.close(pstmt, conn);
-
         }
         return res;
     }
