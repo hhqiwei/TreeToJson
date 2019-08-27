@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="unnamed2">
+    <output-path>$USER_HOME$</output-path>
+    <root id="archive" name="unnamed.ear" />
+  </artifact>
+</component>

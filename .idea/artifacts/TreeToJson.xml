@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="TreeToJson">
+    <output-path>$USER_HOME$</output-path>
+    <root id="archive" name="TreeToJson.war" />
+  </artifact>
+</component>

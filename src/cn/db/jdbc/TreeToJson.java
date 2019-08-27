@@ -43,7 +43,7 @@ public class TreeToJson {
         System.out.print("Please input the password:");
         password = sc.nextLine();
 
-        System.out.println(DBType + '\t' + dbName + '\t' + tableName + '\t' + user + '\t' + password);
+//        System.out.println(DBType + '\t' + dbName + '\t' + tableName + '\t' + user + '\t' + password);
 
         //调用数据库方法返回查找到的数据库内容
         try {

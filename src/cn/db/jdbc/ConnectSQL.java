@@ -74,22 +74,14 @@ public class ConnectSQL {
          *  ds.setUsername("root");
          *  ds.setPassword("root");
          */
-
         try {
 
-            String driverClassName="oracle.jdbc.OracleDriver";
+            String driverClassName = "oracle.jdbc.OracleDriver";
             String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
-            conn = JDBCUtils.getConnection(driverClassName,url,user,password);
-
-
-//            Class.forName("oracle.jdbc.driver.OracleDriver");
-//            conn = DriverManager.getConnection(url, user, password);
+            conn = JDBCUtils.getConnection(driverClassName, url, user, password);
             String sql = String.format("select * from %s", tableName);
-            pstm=conn.prepareStatement(sql);
-            res=pstm.executeQuery();
-//            ps = conn.prepareStatement(sql);
-//            res = ps.executeQuery();
-
+            pstm = conn.prepareStatement(sql);
+            res = pstm.executeQuery();
             List<Tree> list = new ArrayList<Tree>();
             while (res.next()) {
                 System.out.println(res.getString("id") + '\t' + res.getString("name") + '\t' +
@@ -101,7 +93,7 @@ public class ConnectSQL {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBCUtils.close(pstm,conn);
+            JDBCUtils.close(pstm, conn);
         }
         return res;
     }

@@ -70,3 +70,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 严重: oracle.jdbc.driver.OracleDriver is deprecated.”错误。
 解决方法参考：Spring boot项目启动报错oracle.jdbc.driver.OracleDriver is deprecated，但项目还可以起来【https://blog.csdn.net/yanyanhj/article/details/88352908】
 将driverClassName="oracle.jdbc.driver.OracleDriver";改为driverClassName="oracle.jdbc.OracleDriver";
+### 18:01
+自动生成MYSQL数据表测试数据。参考：【使用navicat premium 批量生成测试数据】（https://blog.csdn.net/yxw_android/article/details/80817174）
