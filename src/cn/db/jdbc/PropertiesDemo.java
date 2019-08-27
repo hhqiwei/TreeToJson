@@ -28,6 +28,12 @@ public class PropertiesDemo {
             p.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

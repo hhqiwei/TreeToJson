@@ -61,3 +61,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 10:30
 通过新建类PropertiesDemo来修改配置文件druid.properties中的数据。（出现了一个问题，虽然修改成功了，但是并不能及时读取到修改以后的数据，而是读取修改之前的
 数据，说明数据更新不及时）
+### 14:50
+使用硬编码初始化Druid，成功连接到数据库，接下来就是要传入参数修改就行。参考：数据库连接池之Druid连接池(mysql)[https://blog.csdn.net/Dear_UU/article/details/89370491]
