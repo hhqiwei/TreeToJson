@@ -1,5 +1,6 @@
 package cn.db.jdbc;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,40 @@ public class ToJson {
         List<Tree> treeList = new ArrayList<Tree>();
         treeList = listToTree(list);// 调用函数，传入List<Tree>参数
         System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
+
+        //将转换完的数据保存到本地文件中
+        BufferedWriter writer = null;
+        File file = new File("/treetojson.json");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));
+            writer.write(JSON.toJSONString(treeList));
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                if(writer!=null){
+                    writer.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Tte json writer success!");
+        }
+
+
     }
 
     // 用递归的方法
