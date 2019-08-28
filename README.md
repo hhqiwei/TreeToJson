@@ -76,3 +76,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 将生成的JSON数据输出到文件中（未完成）。
 ### 18:28
 将treetable.sql保存到项目中。
+
+## 2019-08-28 星期三
+### 09:35
+完成将将生成的JSON数据输出到文件中。

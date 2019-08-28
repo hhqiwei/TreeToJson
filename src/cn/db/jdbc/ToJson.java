@@ -15,7 +15,9 @@ public class ToJson {
 
         //将转换完的数据保存到本地文件中
         BufferedWriter writer = null;
-        File file = new File("/treetojson.json");
+
+     File file = new File("src/treetojson.json");
+
         if (!file.exists()) {
             try {
                 file.createNewFile();
