@@ -1,5 +1,5 @@
 /**
- * 修改配置文件druid.properties中的参数
+ * 这个类用来修改配置文件druid.properties中的参数（已经通过传参的方式传入用户输入的参数，不需要此方法了）
  * 2019-08-27 星期二 10:16
  */
 package cn.db.jdbc;
@@ -15,13 +15,11 @@ public class PropertiesDemo {
     public static final Properties p = new Properties();
     public static final String path = "./src/druid.properties";
 
-    /**
-     * 通过类装载器 初始化Properties
-     */
+    //通过类装载器 初始化Properties
     public static void init() {
         //转换成流
         InputStream inputStream =
-//                PropertiesDemo.class.getClassLoader().getResourceAsStream(path);
+        //PropertiesDemo.class.getClassLoader().getResourceAsStream(path);
                 PropertiesDemo.class.getClassLoader().getResourceAsStream("druid.properties");
         try {
             //从输入流中读取属性列表（键和元素对）
@@ -37,22 +35,12 @@ public class PropertiesDemo {
         }
     }
 
-    /**
-     * 通过key获取value
-     *
-     * @param key
-     * @return
-     */
+    //通过key获取value
     public static String get(String key) {
         return p.getProperty(key);
     }
 
-    /**
-     * 修改或者新增key
-     *
-     * @param key
-     * @param value
-     */
+    //修改或者新增key
     public static void update(String key, String value) {
         p.setProperty(key, value);
         FileOutputStream oFile = null;
@@ -71,11 +59,7 @@ public class PropertiesDemo {
         }
     }
 
-    /**
-     * 通过key删除value
-     *
-     * @param key
-     */
+    //通过key删除value
     public static void delete(String key) {
         p.remove(key);
         FileOutputStream oFile = null;
@@ -93,9 +77,7 @@ public class PropertiesDemo {
         }
     }
 
-    /**
-     * 循环所有key value
-     */
+    //循环所有key value
     public static void list() {
         Enumeration en = p.propertyNames(); //得到配置文件的名字
         while (en.hasMoreElements()) {

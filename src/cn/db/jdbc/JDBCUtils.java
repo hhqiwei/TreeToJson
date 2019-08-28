@@ -1,20 +1,16 @@
+/**
+ * 使用阿里巴巴的DRUID连接池技术管理数据库连接
+ */
 package cn.db.jdbc;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.pool.DruidDataSourceFactory;
-
 import javax.sql.DataSource;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.Map;
-import java.util.Properties;
 
 public class JDBCUtils {
 
     //1.定义成员变量 DruidDataSource
     public static DruidDataSource ds;
-
 
     //获取连接，用传入参数的方法解决了修改配置文件但是无法及时更新的问题。
     public static Connection getConnection(String driverClassName,String url,String userName,String password) throws SQLException {
@@ -35,11 +31,9 @@ public class JDBCUtils {
             ds.setMinIdle(10);
             //检查时间
             ds.setMaxWait(5000);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return ds.getConnection();
     }
 

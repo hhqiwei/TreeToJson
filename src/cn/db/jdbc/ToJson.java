@@ -11,12 +11,12 @@ public class ToJson {
     public void treeToJson(List<Tree> list) {
         List<Tree> treeList = new ArrayList<Tree>();
         treeList = listToTree(list);// 调用函数，传入List<Tree>参数
-        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
+//        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
 
         //将转换完的数据保存到本地文件中
         BufferedWriter writer = null;
 
-     File file = new File("src/treetojson.json");
+        File file = new File("src/treetojson.json");
 
         if (!file.exists()) {
             try {
@@ -29,25 +29,22 @@ public class ToJson {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));
             writer.write(JSON.toJSONString(treeList));
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            try{
-                if(writer!=null){
+        } finally {
+            try {
+                if (writer != null) {
                     writer.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("Tte json writer success!");
+            System.out.println("The json writer success!");
         }
-
-
     }
 
     // 用递归的方法

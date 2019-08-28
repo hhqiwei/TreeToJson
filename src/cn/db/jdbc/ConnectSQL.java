@@ -28,26 +28,26 @@ public class ConnectSQL {
         String name = null;
         int parent_id = 0;
 
-        /**
-         *  四个基本属性
-         *  ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-         *  ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
-         *  ds.setUsername("root");
-         *  ds.setPassword("root");
+        /*
+           四个基本属性
+           ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+           ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
+           ds.setUsername("root");
+           ds.setPassword("root");
          */
         try {
             String driverClassName = "com.mysql.cj.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
             conn = JDBCUtils.getConnection(driverClassName, url, user, password);//调用方法，使用连接池
-            String sql = String.format("select * from %s", tableName);
+            String sql = String.format("SELECT * FROM %s", tableName.toUpperCase());
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
             List<Tree> list = new ArrayList<Tree>();
             while (res.next()) {
-                node_id = res.getInt("id");
-                name = res.getString("name");
-                parent_id = res.getInt("pid");
-                System.out.println(node_id + "\t" + name + "\t" + parent_id);
+//                node_id = res.getInt("id");
+//                name = res.getString("name");
+//                parent_id = res.getInt("pid");
+//                System.out.println(node_id + "\t" + name + "\t" + parent_id);
 
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(3)));
             }
@@ -67,25 +67,24 @@ public class ConnectSQL {
         PreparedStatement pstm = null;
         ResultSet res = null;
 
-        /**
-         *  四个基本属性
-         *  ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-         *  ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
-         *  ds.setUsername("root");
-         *  ds.setPassword("root");
+        /*
+           四个基本属性
+           ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+           ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
+           ds.setUsername("root");
+           ds.setPassword("root");
          */
         try {
-
             String driverClassName = "oracle.jdbc.OracleDriver";
             String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
             conn = JDBCUtils.getConnection(driverClassName, url, user, password);
-            String sql = String.format("select * from %s", tableName);
+            String sql = String.format("SELECT * FROM %s", tableName.toUpperCase());
             pstm = conn.prepareStatement(sql);
             res = pstm.executeQuery();
             List<Tree> list = new ArrayList<Tree>();
             while (res.next()) {
-                System.out.println(res.getString("id") + '\t' + res.getString("name") + '\t' +
-                        res.getString("age") + '\t' + res.getString("pid"));
+//                System.out.println(res.getString("id") + '\t' + res.getString("name") + '\t' +
+//                        res.getString("age") + '\t' + res.getString("pid"));
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(4)));
             }
             ToJson tj = new ToJson();

@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class TreeToJson {
 
     public static void main(String[] args) {
-
         ConnectSQL cs = new ConnectSQL();
 
         String DBType;
@@ -45,6 +44,7 @@ public class TreeToJson {
 
 //        System.out.println(DBType + '\t' + dbName + '\t' + tableName + '\t' + user + '\t' + password);
 
+        long startTime = System.currentTimeMillis(); // 获取开始时间
         //调用数据库方法返回查找到的数据库内容
         try {
             cs.chooseDB((String) DBType, (String) dbName, (String) tableName, (String) user, (String) password);
@@ -53,6 +53,9 @@ public class TreeToJson {
         }
 //        System.out.println("==============================");
 //        utils.chooseDB("Oracle", "XE", "test", "c##hhqiwei", "123456");
+
+        long endTime = System.currentTimeMillis(); // 获取结束时间
+        System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
     }
 
 }
