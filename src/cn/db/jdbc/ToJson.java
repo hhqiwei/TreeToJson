@@ -1,10 +1,10 @@
 package cn.db.jdbc;
 
+import com.alibaba.fastjson.JSON;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.alibaba.fastjson.JSON;
 
 public class ToJson {
 

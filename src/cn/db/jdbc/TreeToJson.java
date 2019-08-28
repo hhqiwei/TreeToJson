@@ -7,10 +7,7 @@
 //oracle:"Oracle", "XE", "test", "c##hhqiwei", "123456"
 package cn.db.jdbc;
 
-import com.alibaba.druid.pool.DruidDataSource;
-
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class TreeToJson {
