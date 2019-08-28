@@ -80,3 +80,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ## 2019-08-28 星期三
 ### 09:35
 完成将将生成的JSON数据输出到文件中。
+### 10:23
+发现自动生成的数据库数据不符合树型结构，自己的ID为7，PID也为7，这是不符合要求的。
