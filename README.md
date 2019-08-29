@@ -92,3 +92,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ## 2019-08-29 星期四
 ### 11:17
 把以前的项目迁移到maven。
+### 14:50
+添加单元测试Junit，并编写测试用例：ConnectSQLTest()。

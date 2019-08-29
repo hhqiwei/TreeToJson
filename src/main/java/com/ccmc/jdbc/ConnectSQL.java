@@ -66,7 +66,7 @@ public class ConnectSQL {
     }
 
     //连接ORACLE数据库
-    public ResultSet ConOracle(String dbName, String tableName, String user, String password) {
+    private ResultSet ConOracle(String dbName, String tableName, String user, String password) {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet res = null;
