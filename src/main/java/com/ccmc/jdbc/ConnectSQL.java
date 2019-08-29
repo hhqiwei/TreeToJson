@@ -12,7 +12,7 @@ import java.util.List;
 public class ConnectSQL {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
-    public ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) throws IOException {
+    public static ResultSet chooseDB(String dbType, String dbName, String tableName, String user, String password) throws IOException {
 
         if (dbType.equals("mysql")) {
             System.out.println("Connecting the MySQL,please wait!");
@@ -24,7 +24,7 @@ public class ConnectSQL {
     }
 
     //连接MYSQL数据库
-    private ResultSet ConMySQL(String dbName, String tableName, String user, String password) {
+    private static ResultSet ConMySQL(String dbName, String tableName, String user, String password) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet res = null;
@@ -66,7 +66,7 @@ public class ConnectSQL {
     }
 
     //连接ORACLE数据库
-    private ResultSet ConOracle(String dbName, String tableName, String user, String password) {
+    private static ResultSet ConOracle(String dbName, String tableName, String user, String password) {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet res = null;

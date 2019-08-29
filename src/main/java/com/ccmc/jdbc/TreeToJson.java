@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class TreeToJson {
 
     public static void main(String[] args) {
-        ConnectSQL cs = new ConnectSQL();
+//        ConnectSQL cs = new ConnectSQL();
 
         String DBType;
         String dbName;
@@ -38,7 +38,7 @@ public class TreeToJson {
         long startTime = System.currentTimeMillis(); // 获取开始时间
         //调用数据库方法返回查找到的数据库内容
         try {
-            cs.chooseDB((String) DBType, (String) dbName, (String) tableName, (String) user, (String) password);
+            ConnectSQL.chooseDB((String) DBType, (String) dbName, (String) tableName, (String) user, (String) password);
         } catch (IOException e) {
             e.printStackTrace();
         }

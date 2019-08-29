@@ -24,6 +24,17 @@ public class ConnectSQLTest {
         }
     }
 
+    //测试连接MySQL数据库,city_100
+    @Test
+    public void testConMySQLFor100(){
+        ConnectSQL cs=new ConnectSQL();
+        try {
+            cs.chooseDB("mysql","test","city_100","root","123456");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //测试连接MySQL数据库,city_1000
     @Test
     public void testConMySQLFor1000(){
@@ -51,7 +62,7 @@ public class ConnectSQLTest {
     public void testConMySQLFor100000(){
         ConnectSQL cs=new ConnectSQL();
         try {
-            cs.chooseDB("mysql","test","city_1000000","root","123456");
+            cs.chooseDB("mysql","test","city_100000","root","123456");
         } catch (IOException e) {
             e.printStackTrace();
         }

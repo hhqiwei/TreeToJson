@@ -96,3 +96,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 添加单元测试Junit，并编写测试用例：ConnectSQLTest()。
 ### 15:12
 当数据有10000条的时候，运行程序出现“java.lang.StackOverflowError”错误，说明递归方法不适合在大量数据时使用。
+### 18:58
+下班上传保存。无法将递归转换为循环。
