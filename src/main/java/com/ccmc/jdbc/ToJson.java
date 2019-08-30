@@ -6,14 +6,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("all")
 public class ToJson {
 
     public void treeToJson(List<Tree> list) {
         List<Tree> treeList = new ArrayList<Tree>();
 //        treeList = listToTree(list);// 调用函数，传入List<Tree>参数
-//        treeList =listGetStree(list);
+        treeList =listGetStree(list);
 //        treeList =toTree(list);
-        treeList = build(list);
+//        treeList = build(list);
 //        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
 
         //将转换完的数据保存到本地文件中
@@ -136,7 +137,7 @@ public class ToJson {
     public static List<Tree> build(List<Tree> treeNodes) {
         List<Tree> trees = new ArrayList<Tree>();
         for (Tree treeNode : treeNodes) {
-            if (treeNode.getPid() == 0) {
+            if ("0".equals(treeNode.getPid())) {
                 trees.add(treeNode);
             }
             for (Tree it : treeNodes) {

@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Properties;
 
+@SuppressWarnings("all")
 public class PropertiesDemo {
 
     public static final Properties p = new Properties();

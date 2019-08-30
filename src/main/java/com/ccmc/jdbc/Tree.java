@@ -1,10 +1,9 @@
 package com.ccmc.jdbc;
 
-
 import com.alibaba.fastjson.JSON;
-
 import java.util.List;
 
+@SuppressWarnings("all")
 public class Tree {
 
     private int id;

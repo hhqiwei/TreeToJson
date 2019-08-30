@@ -3,6 +3,7 @@ package com.ccmc.jdbc;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+@SuppressWarnings("all")
 public class listToTree {
 
     /**
