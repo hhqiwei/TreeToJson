@@ -1,13 +1,18 @@
 package com.ccmc.jdbc;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ConnectSQL {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
@@ -47,16 +52,28 @@ public class ConnectSQL {
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
             List<Tree> list = new ArrayList<Tree>();
+//            List<Map<String, Object>> data = new ArrayList<>();
+
             while (res.next()) {
+//                Map<String, Object> map = new HashMap<>();
 //                node_id = res.getInt("id");
 //                name = res.getString("name");
 //                parent_id = res.getInt("pid");
 //                System.out.println(node_id + "\t" + name + "\t" + parent_id);
-
+//                map.put("id", res.getInt("id"));
+//                map.put("name", res.getString("name"));
+//                map.put("pid", res.getInt("pid"));
+//                data.add(map);
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(3)));
             }
             ToJson tj = new ToJson();
             tj.treeToJson(list);//调用函数，传入List<Tree>参数
+            //2019-08-30 星期五 11:17:13 创建新的算法转换父子结构的JOSN
+//            System.out.println("################");
+//            System.out.println(JSON.toJSONString(data));
+//            System.out.println("################");
+//            JSONArray result = new listToTree().listToTree(JSONArray.parseArray(JSON.toJSONString(data)), "id", "pid", "children");
+//            System.out.println(JSON.toJSONString(result));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

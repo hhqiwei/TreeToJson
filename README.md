@@ -98,3 +98,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 当数据有10000条的时候，运行程序出现“java.lang.StackOverflowError”错误，说明递归方法不适合在大量数据时使用。
 ### 18:58
 下班上传保存。无法将递归转换为循环。
+
+## 2019-08-30 星期五
+### 16:29
+使用其他方法构造父子关系的JSON，但是并不能解决栈溢出。参考：【java将list转为树形结构的方法】（https://www.cnblogs.com/zhizhao/p/9956158.html）

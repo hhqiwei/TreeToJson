@@ -136,7 +136,7 @@ public class ToJson {
     public static List<Tree> build(List<Tree> treeNodes) {
         List<Tree> trees = new ArrayList<Tree>();
         for (Tree treeNode : treeNodes) {
-            if (treeNode.getPid()==0) {
+            if (treeNode.getPid() == 0) {
                 trees.add(treeNode);
             }
             for (Tree it : treeNodes) {
