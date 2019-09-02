@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class TreeToJson {
 
     public static void main(String[] args) {
-//        ConnectSQL cs = new ConnectSQL();
 
         String DBType;
         String dbName;
@@ -43,8 +42,6 @@ public class TreeToJson {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println("==============================");
-//        utils.chooseDB("Oracle", "XE", "test", "c##hhqiwei", "123456");
 
         long endTime = System.currentTimeMillis(); // 获取结束时间
         System.out.println("程序运行时间： " + (endTime - startTime) + "ms");

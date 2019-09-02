@@ -1,5 +1,7 @@
+/**
+ * 读取配置文件
+ */
 package com.ccmc.jdbc;
-
 
 import java.io.FileOutputStream;
 import java.io.IOException;

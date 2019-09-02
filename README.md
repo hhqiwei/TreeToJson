@@ -104,3 +104,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 使用其他方法构造父子关系的JSON，但是并不能解决栈溢出。参考：【java将list转为树形结构的方法】（https://www.cnblogs.com/zhizhao/p/9956158.html）
 ### 17:47
 使用@SuppressWarnings("all")压制警告信息。
+
+## 2019-09-02 星期一
+### 18:08:20
+下班保存。发现了问题：当数据量非常大的时候，TOJSONSTRING()方法会循环调用，导致栈溢出StackOverflow异常。使用别的方法将list转为JSON数据。

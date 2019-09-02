@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.sql.Connection;
 
-
+@SuppressWarnings("all")
 public class ConnectSQLTest {
     @Test
     public void testConnectSQL() {

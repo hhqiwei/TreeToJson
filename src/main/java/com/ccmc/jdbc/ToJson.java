@@ -12,11 +12,14 @@ public class ToJson {
     public void treeToJson(List<Tree> list) {
         List<Tree> treeList = new ArrayList<Tree>();
 //        treeList = listToTree(list);// 调用函数，传入List<Tree>参数
-        treeList =listGetStree(list);
+        treeList = listGetStree(list);
 //        treeList =toTree(list);
 //        treeList = build(list);
 //        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
-
+//        System.out.println("SUCCESS TO JSON.\n" + treeList);
+        for (Tree temp: list) {
+            System.out.println(temp.getId()+"\t"+temp.getName()+"\t"+temp.getPid());
+        }
         //将转换完的数据保存到本地文件中
         BufferedWriter writer = null;
 
@@ -32,6 +35,10 @@ public class ToJson {
 
         try {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));
+            /**
+             * 2019-09-02 星期一 17:19:19
+             * 当数据量非常大的时候，下面的TOJSONSTRING()方法会循环调用，导致栈溢出StackOverflow异常。使用别的方法将list转为JSON数据。
+             */
             writer.write(JSON.toJSONString(treeList));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -47,7 +54,7 @@ public class ToJson {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("The json writer success!");
+            System.out.println("The json writer success,please open the file 'treetojson.json'!");
         }
     }
 
@@ -77,7 +84,7 @@ public class ToJson {
 
     /**
      * ：2019-08-29 星期四 17:31
-     * 方法二：
+     * 方法二：二次循环方法
      */
     private static List<Tree> listGetStree(List<Tree> list) {
         List<Tree> treeList = new ArrayList<Tree>();

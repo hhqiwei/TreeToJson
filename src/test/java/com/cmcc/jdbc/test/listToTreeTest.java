@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("all")
 public class listToTreeTest {
     @Test
     public void listToTreeTest(){
