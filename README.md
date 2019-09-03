@@ -108,3 +108,10 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ## 2019-09-02 星期一
 ### 18:08:20
 下班保存。发现了问题：当数据量非常大的时候，TOJSONSTRING()方法会循环调用，导致栈溢出StackOverflow异常。使用别的方法将list转为JSON数据。
+
+## 2019-09-03 星期二
+### 15:22:56
+由treelist输出整个链表。
+### 16:37:56
+导师的意思是让我自己写将list转为JSON的方法，对我直接使用网上架包的JSON.toJSONString(treeList)不是很满意，
+现在布置给我新的任务：熟悉Redis。以后再来完善这个项目。

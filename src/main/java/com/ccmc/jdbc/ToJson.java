@@ -1,7 +1,12 @@
 package com.ccmc.jdbc;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.sun.xml.internal.bind.v2.TODO;
 
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,45 +22,47 @@ public class ToJson {
 //        treeList = build(list);
 //        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
 //        System.out.println("SUCCESS TO JSON.\n" + treeList);
-        for (Tree temp: list) {
-            System.out.println(temp.getId()+"\t"+temp.getName()+"\t"+temp.getPid());
-        }
+
+//        for (Tree temp: list) {
+//            System.out.println(temp.getId()+"\t"+temp.getName()+"\t"+temp.getPid());
+//        }
+
         //将转换完的数据保存到本地文件中
-        BufferedWriter writer = null;
-
-        File file = new File("src/treetojson.json");
-
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));
-            /**
-             * 2019-09-02 星期一 17:19:19
-             * 当数据量非常大的时候，下面的TOJSONSTRING()方法会循环调用，导致栈溢出StackOverflow异常。使用别的方法将list转为JSON数据。
-             */
-            writer.write(JSON.toJSONString(treeList));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println("The json writer success,please open the file 'treetojson.json'!");
-        }
+//        BufferedWriter writer = null;
+//
+//        File file = new File("src/treetojson.json");
+//
+//        if (!file.exists()) {
+//            try {
+//                file.createNewFile();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        try {
+//            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));
+//            /**
+//             * 2019-09-02 星期一 17:19:19
+//             * TODO 当数据量非常大的时候，下面的TOJSONSTRING()方法会循环调用，导致栈溢出StackOverflow异常。使用别的方法将list转为JSON数据。
+//             */
+//            writer.write(JSON.toJSONString(treeList));//将JSON对象转化为JSON字符
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (writer != null) {
+//                    writer.close();
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            System.out.println("The json writer success,please open the file 'treetojson.json'!");
+//        }
     }
 
     // 方法一：用递归的方法
@@ -94,12 +101,26 @@ public class ToJson {
                 treeList.add(tree);
             }
             //找到子
+            //TODO 2019-09-03 星期二 11:47:47：这里可以有算法优化，查找子可以用其他的查找算法，循环查找太慢了
             for (Tree treeNode : list) {
                 if (treeNode.getPid() == tree.getId()) {
                     if (tree.getChildren() == null) {
                         tree.setChildren(new ArrayList<Tree>());
                     }
                     tree.getChildren().add(treeNode);
+                }
+            }
+        }
+
+        //2019-09-03 星期二 15:22:15 由treelist输出整个链表
+        for (int i = 0; i < 100000; i++) {
+            if (treeList != null) {
+                for (Tree tree : treeList) {
+                    Tree temp = null;
+                    temp = tree;
+                    System.out.println("GG\t" + temp.getId() + "\t" + temp.getName() + "\t" + temp.getPid());
+
+                    treeList = temp.getChildren();
                 }
             }
         }
@@ -158,4 +179,5 @@ public class ToJson {
         }
         return trees;
     }
+
 }
