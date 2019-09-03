@@ -115,3 +115,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 16:37:56
 导师的意思是让我自己写将list转为JSON的方法，对我直接使用网上架包的JSON.toJSONString(treeList)不是很满意，
 现在布置给我新的任务：熟悉Redis。以后再来完善这个项目。
+### 16:42:30
+导师问我的问题：什么是栈比，什么是栈溢出。
