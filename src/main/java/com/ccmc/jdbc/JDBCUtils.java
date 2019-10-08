@@ -16,7 +16,10 @@ public class JDBCUtils {
     public static DruidDataSource ds;
 
     //获取连接，用传入参数的方法解决了修改配置文件但是无法及时更新的问题。
-    public static Connection getConnection(String driverClassName,String url,String userName,String password) throws SQLException {
+    public static Connection getConnection(String driverClassName,
+                                           String url,
+                                           String userName,
+                                           String password) throws SQLException {
         //硬编码初始化Druid连接池
         try {
             ds = new DruidDataSource();
@@ -61,10 +64,9 @@ public class JDBCUtils {
                 e.printStackTrace();
             }
         }
-
         if (conn != null) {
             try {
-                conn.close();//归还连接
+                conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

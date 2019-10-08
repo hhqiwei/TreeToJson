@@ -2,7 +2,6 @@ package com.ccmc.jdbc;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.sun.xml.internal.bind.v2.TODO;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -17,11 +16,11 @@ public class ToJson {
     public void treeToJson(List<Tree> list) {
         List<Tree> treeList = new ArrayList<Tree>();
 //        treeList = listToTree(list);// 调用函数，传入List<Tree>参数
-        treeList = listGetStree(list);
-//        treeList =toTree(list);
+//        treeList = listGetStree(list);
+        treeList =toTree(list);
 //        treeList = build(list);
 //        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
-//        System.out.println("SUCCESS TO JSON.\n" + treeList);
+        System.out.println("SUCCESS TO JSON.\n" + treeList);
 
 //        for (Tree temp: list) {
 //            System.out.println(temp.getId()+"\t"+temp.getName()+"\t"+temp.getPid());

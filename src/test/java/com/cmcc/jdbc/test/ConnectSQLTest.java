@@ -18,7 +18,7 @@ public class ConnectSQLTest {
     public void testConMySQL(){
         ConnectSQL cs=new ConnectSQL();
         try {
-            cs.chooseDB("mysql","test","treetable","root","123456");
+            cs.chooseDB("mysql","huangqiwei","treetable","root","123456");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,7 +29,7 @@ public class ConnectSQLTest {
     public void testConMySQLFor100(){
         ConnectSQL cs=new ConnectSQL();
         try {
-            cs.chooseDB("mysql","test","city_100","root","123456");
+            cs.chooseDB("mysql","huangqiwei","city_100","root","123456");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class ConnectSQLTest {
     public void testConMySQLFor1000(){
         ConnectSQL cs=new ConnectSQL();
         try {
-            cs.chooseDB("mysql","test","city_1000","root","123456");
+            cs.chooseDB("mysql","huangqiwei","city_1000","root","123456");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class ConnectSQLTest {
     public void testConMySQLFor10000(){
         ConnectSQL cs=new ConnectSQL();
         try {
-            cs.chooseDB("mysql","test","city_10000","root","123456");
+            cs.chooseDB("mysql","huangqiwei","city_10000","root","123456");
         } catch (IOException e) {
             e.printStackTrace();
         }

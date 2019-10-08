@@ -1,9 +1,6 @@
 package com.ccmc.jdbc;
 
-
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.mysql.cj.xdevapi.JsonArray;
 
 import java.io.*;
 import java.sql.Connection;
@@ -11,9 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @SuppressWarnings("all")
 public class ConnectSQL {
@@ -21,10 +16,10 @@ public class ConnectSQL {
     //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
     public static void chooseDB(String dbType, String dbName, String tableName, String user, String password) throws IOException {
 
-        if (dbType.equals("mysql")) {
+        if ("mysql".equals(dbType)) {
             System.out.println("Connecting the MySQL,please wait!");
             ConMySQL(dbName, tableName, user, password);
-        } else if (dbType.equals("oracle")) {
+        } else if ("oracle".equals(dbType)) {
             System.out.println("Connecting the Oracle,please wait!");
             ConOracle(dbName, tableName, user, password);
         }
@@ -42,9 +37,9 @@ public class ConnectSQL {
         /*
            四个基本属性
            ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-           ds.setUrl("jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8");
+           ds.setUrl("jdbc:mysql://localhost:3306/huangqiwei?serverTimezone=GMT%2B8");
            ds.setUsername("root");
-           ds.setPassword("root");
+           ds.setPassword("123456");
          */
         try {
             String driverClassName = "com.mysql.cj.jdbc.Driver";
@@ -69,8 +64,9 @@ public class ConnectSQL {
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(3)));
             }
 
+            //输出转换为JOSN格式的数据
 //            System.out.println(JSON.toJSONString(list));
-            System.out.println("****************************");
+//            System.out.println("****************************");
             try {
                 new ToJson().treeToJson(list);//调用函数，传入List<Tree>参数
             } catch (Exception e) {
