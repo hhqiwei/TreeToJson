@@ -1,6 +1,7 @@
 package com.ccmc.jdbc;
 
 import com.alibaba.fastjson.JSON;
+
 import java.util.List;
 
 /**
@@ -61,8 +62,11 @@ public class Tree {
 
     @Override
     public String toString() {
-        final String s = JSON.toJSONString(this);
-        return s;
+        System.out.println("11112222");
+        StringBuffer s = new StringBuffer();
+        s.append(JSON.toJSONString(this));
+        System.out.println(s);
+        return null;
 //        return this.toString();
     }
 }

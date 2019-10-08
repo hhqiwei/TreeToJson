@@ -16,6 +16,7 @@ public class ConnectSQL {
 
     /**
      * dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
+     *
      * @param dbType
      * @param dbName
      * @param tableName
@@ -35,20 +36,20 @@ public class ConnectSQL {
     }
 
     //连接MYSQL数据库
-    private static void ConMySQL(String dbName, String tableName, String user, String password) {
+    private static void ConMySQL(String dbName,
+                                 String tableName,
+                                 String user,
+                                 String password) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet res = null;
-        int node_id = 0;
-        String name = null;
-        int parent_id = 0;
 
-        /*
-           四个基本属性
-           ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-           ds.setUrl("jdbc:mysql://localhost:3306/huangqiwei?serverTimezone=GMT%2B8");
-           ds.setUsername("root");
-           ds.setPassword("123456");
+        /**
+         *  四个基本属性
+         *  ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+         *  ds.setUrl("jdbc:mysql://localhost:3306/huangqiwei?serverTimezone=GMT%2B8");
+         *  ds.setUsername("root");
+         *  ds.setPassword("123456");
          */
         try {
             String driverClassName = "com.mysql.cj.jdbc.Driver";
@@ -59,37 +60,21 @@ public class ConnectSQL {
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
             List<Tree> list = new ArrayList<Tree>();
-//            List<Map<String, Object>> data = new ArrayList<>();
 
             while (res.next()) {
-////                Map<String, Object> map = new HashMap<>();
-////                node_id = res.getInt("id");
-////                name = res.getString("name");
-////                parent_id = res.getInt("pid");
-////                System.out.println(node_id + "\t" + name + "\t" + parent_id);
-////                map.put("id", res.getInt("id"));
-////                map.put("name", res.getString("name"));
-////                map.put("pid", res.getInt("pid"));
-////                data.add(map);
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(3)));
             }
 
-            //输出转换为JOSN格式的数据
-//            System.out.println(JSON.toJSONString(list));
-//            System.out.println("****************************");
             try {
-                new ToJson().treeToJson(list);//调用函数，传入List<Tree>参数
+                //调用函数，传入List<Tree>参数
+                System.out.println("22");
+                new ToJson().treeToJson(list);
+                System.out.println("33");
             } catch (Exception e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 System.out.println("Success let trees to json!");
             }
-            //2019-08-30 星期五 11:17:13 创建新的算法转换父子结构的JOSN
-//            System.out.println("################");
-//            System.out.println(JSON.toJSONString(data));
-//            System.out.println("################");
-//            JSONArray result = new listToTree().listToTree(JSONArray.parseArray(JSON.toJSONString(data)), "id", "pid", "children");
-//            System.out.println(JSON.toJSONString(result));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -124,7 +109,8 @@ public class ConnectSQL {
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(4)));
             }
             ToJson tj = new ToJson();
-            tj.treeToJson(list);//调用函数，传入List<Tree>参数
+            //调用函数，传入List<Tree>参数
+            tj.treeToJson(list);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

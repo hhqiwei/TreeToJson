@@ -11,57 +11,29 @@ public class ToJson {
         treeList = listGetStree(list);
 //        treeList =toTree(list);
 //        treeList = build(list);
-//        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
-        System.out.println("SUCCESS TO JSON.\n" + treeList);
+        System.out.println("SUCCESS TO JSON.");
+        treeList.toString();
+//        System.out.println(treeList.toString());
+        System.out.println(treeList.size());
 
-//        for (Tree temp: list) {
-//            System.out.println(temp.getId()+"\t"+temp.getName()+"\t"+temp.getPid());
-//        }
 
-        //将转换完的数据保存到本地文件中
-//        BufferedWriter writer = null;
-//
-//        File file = new File("src/treetojson.json");
-//
-//        if (!file.exists()) {
-//            try {
-//                file.createNewFile();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        try {
-//            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));
-//            /**
-//             * 2019-09-02 星期一 17:19:19
-//             * TODO 当数据量非常大的时候，下面的TOJSONSTRING()方法会循环调用，导致栈溢出StackOverflow异常。使用别的方法将list转为JSON数据。
-//             */
-//            writer.write(JSON.toJSONString(treeList));//将JSON对象转化为JSON字符
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                if (writer != null) {
-//                    writer.close();
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println("The json writer success,please open the file 'treetojson.json'!");
-//        }
+
+
+        System.out.println("66");
     }
 
-    // 方法一：用递归的方法
+    /**
+     * 方法一：用递归的方法
+     *
+     * @param list
+     * @return
+     */
     private List<Tree> listToTree(List<Tree> list) {
         // 用递归找子节点
         List<Tree> treeList = new ArrayList<Tree>();
         for (Tree tree : list) {
-            if (tree.getPid() == 0) {//先找到根节点
+            //先找到根节点
+            if (tree.getPid() == 0) {
                 treeList.add(findChildren(tree, list));
             }
         }
@@ -85,6 +57,7 @@ public class ToJson {
      * 方法二：二次循环方法
      */
     private static List<Tree> listGetStree(List<Tree> list) {
+        System.out.println("444");
         List<Tree> treeList = new ArrayList<Tree>();
         for (Tree tree : list) {
             //找到根
@@ -102,6 +75,7 @@ public class ToJson {
                 }
             }
         }
+        System.out.println("55");
         return treeList;
     }
 
