@@ -1,23 +1,15 @@
 package com.ccmc.jdbc;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("all")
 public class ToJson {
 
     public void treeToJson(List<Tree> list) {
         List<Tree> treeList = new ArrayList<Tree>();
 //        treeList = listToTree(list);// 调用函数，传入List<Tree>参数
-//        treeList = listGetStree(list);
-        treeList =toTree(list);
+        treeList = listGetStree(list);
+//        treeList =toTree(list);
 //        treeList = build(list);
 //        System.out.println("SUCCESS TO JSON.\n" + JSON.toJSONString(treeList));
         System.out.println("SUCCESS TO JSON.\n" + treeList);
@@ -110,19 +102,6 @@ public class ToJson {
                 }
             }
         }
-
-        //2019-09-03 星期二 15:22:15 由treelist输出整个链表
-        for (int i = 0; i < 100000; i++) {
-            if (treeList != null) {
-                for (Tree tree : treeList) {
-                    Tree temp = null;
-                    temp = tree;
-                    System.out.println("GG\t" + temp.getId() + "\t" + temp.getName() + "\t" + temp.getPid());
-
-                    treeList = temp.getChildren();
-                }
-            }
-        }
         return treeList;
     }
 
@@ -178,5 +157,4 @@ public class ToJson {
         }
         return trees;
     }
-
 }

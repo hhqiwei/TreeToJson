@@ -1,7 +1,5 @@
 package com.ccmc.jdbc;
 
-import com.alibaba.fastjson.JSON;
-
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +8,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("all")
+/**
+ * @author hhqiw
+ */
 public class ConnectSQL {
     //利用传入的参数选择对应的连接方式以连接不同的数据库
-    //dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
+
+    /**
+     * dbType:数据库类型;dbName:数据库名;tableName:表名;user:用户名;password:密码;
+     * @param dbType
+     * @param dbName
+     * @param tableName
+     * @param user
+     * @param password
+     * @throws IOException
+     */
     public static void chooseDB(String dbType, String dbName, String tableName, String user, String password) throws IOException {
 
         if ("mysql".equals(dbType)) {
@@ -44,7 +53,8 @@ public class ConnectSQL {
         try {
             String driverClassName = "com.mysql.cj.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=GMT%2B8";
-            conn = JDBCUtils.getConnection(driverClassName, url, user, password);//调用方法，使用连接池
+            //调用方法，使用连接池
+            conn = JDBCUtils.getConnection(driverClassName, url, user, password);
             String sql = String.format("SELECT * FROM %s", tableName.toUpperCase());
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();

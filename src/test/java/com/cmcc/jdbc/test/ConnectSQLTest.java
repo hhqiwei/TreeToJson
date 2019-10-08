@@ -2,9 +2,7 @@ package com.cmcc.jdbc.test;
 
 import com.ccmc.jdbc.ConnectSQL;
 import org.junit.Test;
-
 import java.io.IOException;
-import java.sql.Connection;
 
 @SuppressWarnings("all")
 public class ConnectSQLTest {
@@ -62,7 +60,7 @@ public class ConnectSQLTest {
     public void testConMySQLFor100000(){
         ConnectSQL cs=new ConnectSQL();
         try {
-            cs.chooseDB("mysql","test","city_100000","root","123456");
+            cs.chooseDB("mysql","huangqiwei","city_100000","root","123456");
         } catch (IOException e) {
             e.printStackTrace();
         }

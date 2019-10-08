@@ -120,4 +120,6 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 
 ## 2019-10-08 星期二 
 ### 11:49:34 
-修改以运行。
+导师要求完善，修改以运行。
+### 17:33:07
+精简代码。

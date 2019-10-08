@@ -3,7 +3,9 @@ package com.ccmc.jdbc;
 import com.alibaba.fastjson.JSON;
 import java.util.List;
 
-@SuppressWarnings("all")
+/**
+ * @author hhqiw
+ */
 public class Tree {
 
     private int id;
@@ -59,7 +61,8 @@ public class Tree {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        final String s = JSON.toJSONString(this);
+        return s;
+//        return this.toString();
     }
-
 }
