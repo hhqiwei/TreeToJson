@@ -23,7 +23,6 @@
     <!--    放置的都是项目运行所依赖的包-->
     <dependencies>
 
-
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>

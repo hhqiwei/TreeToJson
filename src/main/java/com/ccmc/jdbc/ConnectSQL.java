@@ -64,12 +64,9 @@ public class ConnectSQL {
             while (res.next()) {
                 list.add(new Tree(res.getInt(1), res.getString(2), res.getInt(3)));
             }
-
             try {
                 //调用函数，传入List<Tree>参数
-                System.out.println("22");
                 new ToJson().treeToJson(list);
-                System.out.println("33");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -82,7 +79,13 @@ public class ConnectSQL {
         }
     }
 
-    //连接ORACLE数据库
+    /**
+     * 连接ORACLE数据库
+     * @param dbName
+     * @param tableName
+     * @param user
+     * @param password
+     */
     private static void ConOracle(String dbName, String tableName, String user, String password) {
         Connection conn = null;
         PreparedStatement pstm = null;

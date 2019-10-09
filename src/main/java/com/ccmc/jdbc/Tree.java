@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import java.util.List;
 
 /**
+ * 树型bean
  * @author hhqiw
  */
 public class Tree {
@@ -60,13 +61,15 @@ public class Tree {
         System.out.println(this.id + "\t" + this.name + this.pid + "\t" + this.children);
     }
 
+    /**
+     * TODO 2019-10-09 星期三 11:50:07 多层嵌套使栈溢出，暂时无法解决,无论使用哪个架包，都是会栈溢出，JSON.toJSONString(this)
+     * @return
+     */
     @Override
     public String toString() {
-        System.out.println("11112222");
         StringBuffer s = new StringBuffer();
         s.append(JSON.toJSONString(this));
-        System.out.println(s);
-        return null;
-//        return this.toString();
+//        System.out.println(s);
+        return  s.toString();
     }
 }

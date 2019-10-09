@@ -1,25 +1,53 @@
 package com.ccmc.jdbc;
 
+
+import com.alibaba.fastjson.JSON;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ToJson {
 
     public void treeToJson(List<Tree> list) {
+//        System.out.println(list.size());
+//        for (Tree tree : list) {
+//            System.out.println(tree.getId() + "_" + tree.getName() + "_" + tree.getPid() + "_" + tree.getChildren());
+//        }
         List<Tree> treeList = new ArrayList<Tree>();
 //        treeList = listToTree(list);// 调用函数，传入List<Tree>参数
         treeList = listGetStree(list);
 //        treeList =toTree(list);
 //        treeList = build(list);
         System.out.println("SUCCESS TO JSON.");
-        treeList.toString();
-//        System.out.println(treeList.toString());
-        System.out.println(treeList.size());
-
-
-
-
+        try {
+            writeFileContext(treeList,"D:\\json.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("66");
+    }
+
+
+    /**
+     * 将list按行写入到txt文件中
+     * @param strings
+     * @param path
+     * @throws Exception
+     */
+    public static void writeFileContext(List<Tree>  strings, String path) throws Exception {
+        File file = new File(path);
+        //如果没有文件就创建
+        if (!file.isFile()) {
+            file.createNewFile();
+        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+        for (Tree l:strings){
+            writer.write(l + "\r\n");
+        }
+        writer.close();
     }
 
     /**
