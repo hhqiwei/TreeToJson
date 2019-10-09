@@ -3,7 +3,6 @@ package com.ccmc.jdbc;
 import java.io.IOException;
 import java.util.Scanner;
 
-@SuppressWarnings("all")
 public class TreeToJson {
 
     public static void main(String[] args) {

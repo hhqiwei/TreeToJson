@@ -4,7 +4,6 @@ import com.ccmc.jdbc.ConnectSQL;
 import org.junit.Test;
 import java.io.IOException;
 
-@SuppressWarnings("all")
 public class ConnectSQLTest {
     @Test
     public void testConnectSQL() {

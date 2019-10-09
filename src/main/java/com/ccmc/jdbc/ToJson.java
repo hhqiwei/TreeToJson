@@ -1,14 +1,14 @@
 package com.ccmc.jdbc;
 
-
-import com.alibaba.fastjson.JSON;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author hhqiw
+ */
 public class ToJson {
 
     public void treeToJson(List<Tree> list) {
@@ -23,13 +23,12 @@ public class ToJson {
 //        treeList = build(list);
         System.out.println("SUCCESS TO JSON.");
         try {
-            writeFileContext(treeList,"D:\\json.json");
+            writeFileContext(treeList,"D:\\treetojson.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("66");
     }
-
 
     /**
      * 将list按行写入到txt文件中

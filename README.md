@@ -129,3 +129,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ## 2019-10-09 星期三
 ### 11:58:23
 多层嵌套使栈溢出，暂时无法解决,无论使用哪个架包，都是会栈溢出，JSON.toJSONString(this)，询问了李子健、何家建，都无法解决。
+### 14:28:01
+精简代码。

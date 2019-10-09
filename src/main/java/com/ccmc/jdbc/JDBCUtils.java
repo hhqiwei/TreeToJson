@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@SuppressWarnings("all")
 public class JDBCUtils {
 
     //1.定义成员变量 DruidDataSource
