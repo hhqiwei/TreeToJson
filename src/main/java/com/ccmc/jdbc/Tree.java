@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -13,9 +14,9 @@ import java.util.List;
  */
 public class Tree {
 
-    private int id;
+    private Integer id;
     private String name;
-    private int pid;
+    private Integer pid;
     private List<Tree> children;
 
     public Tree() {

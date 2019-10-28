@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="oracle_test@localhost" uuid="d49a4f3a-c4c7-45a7-bd58-d1dd5a36cdbe">
-      <driver-ref>oracle</driver-ref>
-      <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
-      <driver-properties>
-        <property name="v$session.program" value="DataGrip" />
-      </driver-properties>
-    </data-source>
     <data-source source="LOCAL" name="mysql_huangqiwei@localhost" uuid="2eeee06d-7895-49a7-a8b1-93de0f6d18c7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -23,6 +13,31 @@
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - postgres@192.168.57.131" uuid="5dc1690c-8dda-40b5-990f-695f910742e5">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://192.168.57.131:5432/postgres</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="SQLite - test.db" uuid="5c06d5cd-c727-4d53-ad39-99b75eb66ac4">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../DataBase/SQLite3/Data/test.db</jdbc-url>
+      <driver-properties>
+        <property name="enable_load_extension" value="true" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="Oracle@windows" uuid="7b2f4592-4361-4af1-b2ee-a1e75ea9237a">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@127.0.0.1:1521:ORCL</jdbc-url>
+      <driver-properties>
+        <property name="v$session.program" value="DataGrip" />
       </driver-properties>
     </data-source>
   </component>

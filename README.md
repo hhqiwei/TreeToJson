@@ -139,3 +139,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 14:34:27
 在Win上安装Oracle数据库，并通过Navicat连接成功。
 在ubuntu中安装mongodb数据库，并通过Navicat连接成功。
+### 15:57:06
+项目连接ORACLE XEE 11G成功。
