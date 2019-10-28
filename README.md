@@ -136,3 +136,6 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 9:49:21
 在ubuntu中安装postgresql数据库，并通过Navicat连接成功。
 账号：psostgres，密码；123456
+### 14:34:27
+在Win上安装Oracle数据库，并通过Navicat连接成功。
+在ubuntu中安装mongodb数据库，并通过Navicat连接成功。
