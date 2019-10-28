@@ -15,11 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="PostgreSQL - postgres@192.168.57.131" uuid="5dc1690c-8dda-40b5-990f-695f910742e5">
+    <data-source source="LOCAL" name="PostgreSQL - huangqiwei@192.168.57.131" uuid="5dc1690c-8dda-40b5-990f-695f910742e5">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://192.168.57.131:5432/postgres</jdbc-url>
+      <jdbc-url>jdbc:postgresql://192.168.57.131:5432/huangqiwei</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="SQLite - test.db" uuid="5c06d5cd-c727-4d53-ad39-99b75eb66ac4">
       <driver-ref>sqlite.xerial</driver-ref>

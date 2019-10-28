@@ -141,3 +141,5 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 在ubuntu中安装mongodb数据库，并通过Navicat连接成功。
 ### 15:57:06
 项目连接ORACLE XEE 11G成功。
+### 17:31:48
+连接postgresql、sqlite失败。
