@@ -1,6 +1,9 @@
 package com.ccmc.jdbc;
 
 import com.alibaba.fastjson.JSON;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 

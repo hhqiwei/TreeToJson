@@ -131,3 +131,8 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 多层嵌套使栈溢出，暂时无法解决,无论使用哪个架包，都是会栈溢出，JSON.toJSONString(this)，询问了李子健、何家建，都无法解决。
 ### 14:28:01
 精简代码。
+
+## 2019-10-28 星期一
+### 9:49:21
+在ubuntu中安装postgresql数据库，并通过Navicat连接成功。
+账号：psostgres，密码；123456
