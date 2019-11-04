@@ -23,7 +23,7 @@ public class ToJson {
 //        treeList = build(list);
         System.out.println("SUCCESS TO JSON.");
         try {
-            writeFileContext(treeList,"D:\\treetojson.json");
+            writeFileContext(treeList,"treetojson.json");
         } catch (Exception e) {
             e.printStackTrace();
         }

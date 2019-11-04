@@ -143,3 +143,8 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 项目连接ORACLE XEE 11G成功。
 ### 17:31:48
 连接postgresql、sqlite失败。
+
+## 2019-11-04 星期一
+### 17:43:38
+成功连接sqlite数据库，并解决出现的错误“testWhileIdle is true, validationQuery not set”。参考：
+[严重: testWhileIdle is true, validationQuery not set 使用Druid连接池报错处理【无Spring框架，使用的JDK9，MYSQL8版本】](https://blog.csdn.net/weixin_42323802/article/details/82726267)

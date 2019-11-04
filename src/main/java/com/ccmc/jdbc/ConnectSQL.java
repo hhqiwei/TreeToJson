@@ -98,9 +98,11 @@ public class ConnectSQL {
            ds.setUsername("root");
            ds.setPassword("root");
          */
+//        jdbc:oracle:thin:@127.0.0.1:1521:ORCL
+        System.out.println("tableNmae is :"+tableName);
         try {
             String driverClassName = "oracle.jdbc.OracleDriver";
-            String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
+            String url = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
             conn = JDBCUtils.getConnection(driverClassName, url, user, password);
             String sql = String.format("SELECT * FROM %s", tableName.toUpperCase());
             pstm = conn.prepareStatement(sql);
@@ -120,4 +122,7 @@ public class ConnectSQL {
             JDBCUtils.close(pstm, conn);
         }
     }
+
+
+
 }
