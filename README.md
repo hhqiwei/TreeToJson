@@ -148,3 +148,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 17:43:38
 成功连接sqlite数据库，并解决出现的错误“testWhileIdle is true, validationQuery not set”。参考：
 [严重: testWhileIdle is true, validationQuery not set 使用Druid连接池报错处理【无Spring框架，使用的JDK9，MYSQL8版本】](https://blog.csdn.net/weixin_42323802/article/details/82726267)
+
+## 2019-11-05 星期二
+### 9:01:53
+成功连接postgresql数据库。

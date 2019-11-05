@@ -117,7 +117,7 @@ public class JDBCUtilsTest {
 
     /**
      * 测试连接SQLite数据库
-     * 2019-10-28 星期一 15:20:00
+     * 2019-11-04 星期一 8:53:42
      */
     @Test
     public void getConnectionSQLite() {
@@ -131,6 +131,35 @@ public class JDBCUtilsTest {
             String url = "jdbc:sqlite:"+dbUrl;
             //调用方法，使用连接池
             conn = JDBCUtils.getConnection(driverClassName, url, "","" );
+            String sql = String.format("SELECT * FROM %s", "city_100");
+            pstmt = conn.prepareStatement(sql);
+            res = pstmt.executeQuery();
+            while (res.next()) {
+                System.out.println(res.getInt(1) + "\t" + res.getString(2) + "\t" + res.getInt(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(pstmt, conn);
+        }
+    }
+
+
+    /**
+     * 测试连接PostgreSQL数据库
+     * 2019-11-05 星期二 8:53:35
+     */
+    @Test
+    public void getConnectionPostgreSQL() {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet res = null;
+
+        try {
+            String driverClassName = "org.postgresql.Driver";
+            String url = "jdbc:postgresql://192.168.57.131:5432/huangqiwei";
+            //调用方法，使用连接池
+            conn = JDBCUtils.getConnection(driverClassName, url, "postgres","123456" );
             String sql = String.format("SELECT * FROM %s", "city_100");
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
