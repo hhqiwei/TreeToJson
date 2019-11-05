@@ -10,9 +10,9 @@
 
 封装就是讲一些细节信息隐藏起来，对于外界不可见。
 
-### 17:49 
+### 17:49
 
-java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/details/79735790)
+[java list 转树 tree 的三种写法](https://blog.csdn.net/jcroad/article/details/79735790)
 
 ## 2019-08-21
 
@@ -22,16 +22,16 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 3、数据库账号密码等不能写死，因为每个数据库的账号密码都不同。
 4、由数据表找出父子关系，不能写死。（现在我就是由我自己定义的父子关系表，所以很简单的就可以找出来了）
 
-## 2019-08-22 
+## 2019-08-22
 
-### 10:34 
+### 10:34
 
 添加配置文件并读取。
 
 ### 16:18
 
 建立Oracle数据库并且读取数据表内容。
-（如何找到IDEA连接mysql数据库的jar包本地路径）[https://jingyan.baidu.com/article/948f592474f2c7980ef5f97c.html]
+[如何找到IDEA连接mysql数据库的jar包本地路径](https://jingyan.baidu.com/article/948f592474f2c7980ef5f97c.html)
 
 ### 17:34
 
@@ -41,7 +41,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 
 由用户输入的数据来调用方法。（但是调用方法的时候，参数传进去了，还是调用调用不成功，可能是传入的数据类型不对，接下来检查数据类型）
 
-## 2019-08-23 
+## 2019-08-23
 
 ### 09:10
 
@@ -62,7 +62,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 
 综上，优化代码，提升性能。
 
-## 2019-08-26 
+## 2019-08-26
 
 ### 14:42
 
@@ -84,7 +84,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 
 尝试通过连接池test数据库,因为家里的电脑没有MYSQL，暂时无法连接上。
 
-## 2019-08-27 星期二 
+## 2019-08-27 星期二
 
 ### 08:55
 
@@ -113,7 +113,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 
 ### 18:01
 
-自动生成MYSQL数据表测试数据。参考：【使用navicat premium 批量生成测试数据】（https://blog.csdn.net/yxw_android/article/details/80817174）
+自动生成MYSQL数据表测试数据。参考：[使用navicat premium 批量生成测试数据](https://blog.csdn.net/yxw_android/article/details/80817174)
 
 ### 18:26
 
@@ -254,3 +254,7 @@ java list 转树 tree 的三种写法(https://blog.csdn.net/jcroad/article/detai
 ### 10:26:47
 
 完善ConnectSQL类的编写，并测试各个数据库读取出来的数据转换。问题：Oracle数据库失败。
+
+### 11:35:03
+
+解决不能连接Oracle数据库的问题。参考：[druid配置oracle遇到: 未找到要求的 FROM 关键字 errorCode 923, state 42000](https://www.cnblogs.com/yueguanguanyun/p/9295145.html)

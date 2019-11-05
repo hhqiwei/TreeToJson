@@ -54,19 +54,12 @@ public class JDBCUtilsTest {
         PreparedStatement pstmt = null;
         ResultSet res = null;
 
-        /**
-         *  四个基本属性
-         *  ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-         *  ds.setUrl("jdbc:mysql://localhost:3306/huangqiwei?serverTimezone=GMT%2B8");
-         *  ds.setUsername("root");
-         *  ds.setPassword("123456");
-         */
         try {
             String driverClassName = "oracle.jdbc.OracleDriver";
-            String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+            String url = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
             //调用方法，使用连接池
             conn = JDBCUtils.getConnection(driverClassName, url, "HUANGQIWEI", "HuangQiwei123");
-            String sql = String.format("SELECT * FROM %s", "city_100");
+            String sql = String.format("select * from %s", "CITY_100");
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
             while (res.next()) {
@@ -97,6 +90,7 @@ public class JDBCUtilsTest {
             //调用方法，使用连接池
             conn = JDBCUtils.getConnection(driverClassName, url, "","" );
             String sql = String.format("SELECT * FROM %s", "city_100");
+            System.out.println(sql);
             pstmt = conn.prepareStatement(sql);
             res = pstmt.executeQuery();
             while (res.next()) {
@@ -108,7 +102,6 @@ public class JDBCUtilsTest {
             JDBCUtils.close(pstmt, conn);
         }
     }
-
 
     /**
      * 测试连接PostgreSQL数据库
