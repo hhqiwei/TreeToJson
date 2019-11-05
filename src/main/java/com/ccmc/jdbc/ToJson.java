@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ToJson {
 
-    public void treeToJson(List<Tree> list) {
+    public  void treeToJson(List<Tree> list) {
 //        System.out.println(list.size());
 //        for (Tree tree : list) {
 //            System.out.println(tree.getId() + "_" + tree.getName() + "_" + tree.getPid() + "_" + tree.getChildren());
