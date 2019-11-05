@@ -258,3 +258,7 @@
 ### 11:35:03
 
 解决不能连接Oracle数据库的问题。参考：[druid配置oracle遇到: 未找到要求的 FROM 关键字 errorCode 923, state 42000](https://www.cnblogs.com/yueguanguanyun/p/9295145.html)
+
+### 11:37:47
+
+连接sqlite出现：testWhileIdle is true, validationQuery not set。参考：[严重: testWhileIdle is true, validationQuery not set 使用Druid连接池报错处理【无Spring框架，使用的JDK9，MYSQL8版本】](https://blog.csdn.net/weixin_42323802/article/details/82726267)

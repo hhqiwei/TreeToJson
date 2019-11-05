@@ -29,6 +29,7 @@ public class JDBCUtils {
             //其他属性
             //初始大小
             ds.setInitialSize(10);
+            ds.setTestWhileIdle(false);
 //            ds.setValidationQuery("SELECT 1");
             //最大大小
             ds.setMaxActive(50);
