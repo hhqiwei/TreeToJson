@@ -262,3 +262,9 @@
 ### 11:37:47
 
 连接sqlite出现：testWhileIdle is true, validationQuery not set。参考：[严重: testWhileIdle is true, validationQuery not set 使用Druid连接池报错处理【无Spring框架，使用的JDK9，MYSQL8版本】](https://blog.csdn.net/weixin_42323802/article/details/82726267)
+
+## 2019-11-11 星期一
+
+### 14:44:19
+
+删除一些不必要的代码。今天不要在公司修改，回到家，对代码进行修改。

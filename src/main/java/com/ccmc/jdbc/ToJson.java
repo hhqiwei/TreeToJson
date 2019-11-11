@@ -11,11 +11,8 @@ import java.util.List;
  */
 public class ToJson {
 
-    public  void treeToJson(List<Tree> list) {
-//        System.out.println(list.size());
-//        for (Tree tree : list) {
-//            System.out.println(tree.getId() + "_" + tree.getName() + "_" + tree.getPid() + "_" + tree.getChildren());
-//        }
+    public void treeToJson(List<Tree> list) {
+
         List<Tree> treeList = new ArrayList<Tree>();
 //        treeList = listToTree(list);// 调用函数，传入List<Tree>参数
         treeList = listGetStree(list);
@@ -23,27 +20,29 @@ public class ToJson {
 //        treeList = build(list);
         System.out.println("SUCCESS TO JSON.");
         try {
-            writeFileContext(treeList,"treetojson.json");
+            writeFileContext(treeList, "treetojson.json");
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            treeList = null;
         }
-        System.out.println("66");
     }
 
     /**
      * 将list按行写入到txt文件中
+     *
      * @param strings
      * @param path
      * @throws Exception
      */
-    public static void writeFileContext(List<Tree>  strings, String path) throws Exception {
+    public static void writeFileContext(List<Tree> strings, String path) throws Exception {
         File file = new File(path);
         //如果没有文件就创建
         if (!file.isFile()) {
             file.createNewFile();
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-        for (Tree l:strings){
+        for (Tree l : strings) {
             writer.write(l + "\r\n");
         }
         writer.close();
@@ -84,7 +83,6 @@ public class ToJson {
      * 方法二：二次循环方法
      */
     private static List<Tree> listGetStree(List<Tree> list) {
-        System.out.println("444");
         List<Tree> treeList = new ArrayList<Tree>();
         for (Tree tree : list) {
             //找到根
@@ -102,7 +100,6 @@ public class ToJson {
                 }
             }
         }
-        System.out.println("55");
         return treeList;
     }
 
